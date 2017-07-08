@@ -1,0 +1,36 @@
+.material__view-wrap{
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  border: 1px solid black
+}
+
+.view{
+  height: 100%;
+}
+
+.footer__wrap{
+  display: flex;
+  align-items: center;
+  min-width: 716px;
+  height: 2.5rem;
+  margin: auto;
+  border-top: 2px solid #a6a6a6;
+}
+
+.view_path__item{
+  color: #b5b5b5;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 1rem 0 0;
+  &:after{
+    display: inline-block;
+    content: '/';
+    color: #b5b5b5;
+    margin: 0 0 0 1rem;
+  }
+
+  &:first-child{
+    margin-left: 4rem;
+  }
+}
