@@ -1,6 +1,11 @@
 .common{
     display: flex;
     flex-flow: row wrap;
+    @media (width<1200px) {
+      flex-flow: row nowrap;
+      width: 100%;
+      overflow: auto;
+  }
 }
 
 .item {
@@ -12,6 +17,7 @@
     margin: auto;
 }
 .hovered{
+  border: 1px solid white;
     button{
         opacity: 1;
         transition: opacity .3s, background-color .3s;
@@ -45,6 +51,7 @@
 .vest {}
 .tie {}
 .mtm__item-wrap{
+    display: flex;
     position: relative;
     height: 193px;
     width: 169px;
@@ -55,4 +62,9 @@
     &:nth-child(2n+1){
          margin-right: 20px;
      }
+    @media (width < 1200px){
+      margin: 0 20px 20px 0;
+      min-width: 100px;
+      height: 150px;
+    }
 }

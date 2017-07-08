@@ -1,4 +1,8 @@
 .common{
     display: flex;
     flex-direction: row;
+    @media (width < 1200px){
+        flex-direction: column;
+        width: 100%;
+    }
 }

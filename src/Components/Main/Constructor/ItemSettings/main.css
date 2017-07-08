@@ -1,3 +1,6 @@
 .wrap{
   min-width: 800px;
+  @media (width < 1200px) {
+    min-width: 0;
+  }
 }
