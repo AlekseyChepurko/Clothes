@@ -81,9 +81,20 @@ module.exports = {
         rules: [
             {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
             {test: /\.css$/, exclude: /node_modules/, use: ['style-loader',{loader: 'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]'},'postcss-loader']},
-            {test: /\.(png|svg|jpg|gif)$/,use: [
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                loaders: [
                 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]&outputPath=assets/imgs/',
-                'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']},
+                    // {loader: 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false',
+                    {loader: 'image-webpack-loader',
+                        query: {
+                            mozjpeg: {progressive: true},
+                            gifsicle: {interlaced: false},
+                            optipng: {optimizationLevel: 4},
+                            pngquant: {quality: '75-90', speed: 3}
+                        }
+                    }]
+            },
             {test: /\.(woff|woff2|eot|ttf|otf)$/,use: [
                 'file-loader?name=assets/fonts/[name].[ext]&publicPath=/']},
             {test: /\.json$/,use: [
