@@ -1,0 +1,20 @@
+.common{
+  width: 360px;
+  margin: 0 30px 0 0;
+}
+
+.constructor__choice-wrap{
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 20px 0;
+}
+
+.constructor__choice{
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    min-height: 2rem;
+    &:first-child{
+         border-right: 2px solid #bfb19e;
+     }
+}
