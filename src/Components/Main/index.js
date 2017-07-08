@@ -3,9 +3,9 @@
  */
 import React,{Component} from 'react'
 import Common from 'Common'
-import Mtm from './Constructor'
+import Preview from './Preview'
+import Constructor from "./Constructor";
 import './main.css'
-import Constructor from "./Constructor/index";
 
 class Main extends Component {
     render(){
@@ -13,6 +13,7 @@ class Main extends Component {
         <Common>
             <section styleName="common">
                 <Constructor />
+                <Preview/>
             </section>
         </Common>
         )

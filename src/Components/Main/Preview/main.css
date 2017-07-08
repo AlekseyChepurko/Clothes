@@ -1,0 +1,11 @@
+.preview-wrap{
+  //display: flex;
+  position: relative;
+  width: 372px;
+  margin: 20px 0 0 0;
+}
+
+.preview__dummy-img{
+  display: block;
+  margin: auto;
+}
