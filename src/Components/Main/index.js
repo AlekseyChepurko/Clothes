@@ -3,13 +3,13 @@
  */
 import React,{Component} from 'react'
 import Common from 'Common'
-import './sMain.css'
+import './main.css'
 
 class Main extends Component {
     render(){
         return(
         <Common>
-            <div className="asdasd" styleName='somes'></div>
+            <section styleName="common"></section>
         </Common>
         )
     };
