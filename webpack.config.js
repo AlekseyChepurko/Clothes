@@ -53,22 +53,6 @@ const plugins = [
         },
         hash: true,
     }),
-    // new webpack.LoaderOptionsPlugin({
-    //     options: {
-    //         postcss: [
-    //             fontMagician({
-    //                 variants: {
-    //                     'Roboto Condensed': {
-    //                         '300': [],
-    //                         '400': [],
-    //                         '700': []
-    //                     }
-    //                 },
-    //                 foundries: ['google']
-    //             })
-    //         ]
-    //     }
-    // })
 ];
 
 let entries = {
@@ -96,8 +80,6 @@ module.exports = {
 
         rules: [
             {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-            {test: /\.s[ac]ss$/,use: extractSass.extract({use:
-                [{loader: "css-loader",},{ loader: 'postcss-loader', options: { sourceMap: true } }, {loader: "sass-loader"}],fallback: "style-loader"})},
             {test: /\.css$/, exclude: /node_modules/, use: ['style-loader',{loader: 'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]'},'postcss-loader']},
             {test: /\.(png|svg|jpg|gif)$/,use: [
                 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]&outputPath=assets/imgs/',
