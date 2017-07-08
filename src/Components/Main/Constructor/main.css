@@ -1,19 +1,4 @@
 .common{
-    max-width: 360px;
-}
-
-.constructor__choice-wrap{
     display: flex;
     flex-direction: row;
-    margin: 0 0 20px 0;
-}
-
-.constructor__choice{
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    min-height: 2rem;
-        &:first-child{
-            border-right: 2px solid #bfb19e;
-         }
 }
