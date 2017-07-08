@@ -1,6 +1,10 @@
 .common{
-    min-height: 875px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 875px;
     margin: 0 0 100px 0;
     padding: 55px 125px;
+    box-sizing: border-box;
     background: #e9e9e9;
 }
