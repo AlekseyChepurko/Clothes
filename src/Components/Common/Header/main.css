@@ -1,0 +1,34 @@
+.common{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 125px;
+    text-transform: uppercase;
+    min-height: 100px;
+
+    >* {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+     }
+}
+
+.logo__block_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img{
+        max-height: 22px;
+        max-width: 22px;
+    }
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.little{
+    font-size: .7rem;
+    text-transform: none;
+}

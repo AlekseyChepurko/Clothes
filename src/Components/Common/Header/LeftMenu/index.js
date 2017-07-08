@@ -2,13 +2,13 @@
  * Created by Алексей on 08.07.2017.
  */
 import React, {Component} from 'react'
-
+import './main.css'
 class LeftMenu extends Component {
     render(){
-        return <section>
-            <p>order</p>
-            <p>dashboard</p>
-            <p>ed {this.props.ed}</p>
+        return <section styleName="common">
+            <a styleName="order__button"><p>order</p></a>
+            <p styleName="dashboard bold">dashboard</p>
+            <p styleName="bold">ed {this.props.ed}</p>
         </section>
     }
 }

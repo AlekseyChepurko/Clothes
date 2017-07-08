@@ -1,0 +1,35 @@
+
+:global body{
+    font-size: 16px;
+    font-family: "Roboto";
+
+    button{
+        border: 0;
+        background: none;
+        font: inherit;
+        cursor: pointer;
+        width: 100%;
+        height: auto;
+        box-sizing: content-box;
+        line-height: normal;
+        padding: 0;
+        margin: 0;
+        text-align: inherit;
+        text-transform: inherit;
+    }
+    
+    a {
+        display: block;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0;
+        -webkit-margin-end: 0;
+    }
+    p {
+        display: block;
+        -webkit-margin-before: 0;
+        -webkit-margin-after: 0;
+        -webkit-margin-start: 0;
+        -webkit-margin-end: 0;
+    }
+}
