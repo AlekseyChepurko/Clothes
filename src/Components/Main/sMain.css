@@ -1,0 +1,12 @@
+#root{
+    display: flex;
+    font-family: "Roboto";
+}
+
+.somes{
+    background: red;
+
+    @media (width < 400px){
+        background: green;
+    }
+}
