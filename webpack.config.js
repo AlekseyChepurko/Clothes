@@ -84,7 +84,8 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 loaders: [
-                'file-loader?hash=sha512&digest=hex&name=[hash].[ext]&outputPath=assets/imgs/',
+                // 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]&outputPath=assets/imgs/',
+                    'url-loader?limit=8192',
                     // {loader: 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false',
                     {loader: 'image-webpack-loader',
                         query: {
