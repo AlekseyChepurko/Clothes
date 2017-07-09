@@ -1,8 +1,8 @@
 .common{
   position: absolute;
-  left: 43px;
+  left: 0;
   top: 35px;
-  background-color: #8f744a;
+  //background-color: #8f744a;
   padding: 10px 8px;
   &:hover{
     cursor: pointer;
@@ -16,11 +16,18 @@
   }
 
 .line{
-  background: white;
+  background: #8f744a;
   width: 20px;
   height: 3px;
   margin: 0 0 3px 0;
+  transition: background-color .3s;
   &:last-child{
     margin: 0;
+  }
+}
+
+.opened{
+  .line{
+    background: white;
   }
 }
