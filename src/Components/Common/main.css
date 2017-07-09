@@ -1,0 +1,8 @@
+.common{
+  display: flex;
+  flex-direction: row;
+}
+
+.content-wrap{
+  width: 100%;
+}
