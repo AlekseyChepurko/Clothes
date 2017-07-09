@@ -8,6 +8,7 @@ import store from './store'
 import './main.css'
 import Main from './Components/Main'
 
+
 ReactDOM.render(
     <Provider  store={store}>
         <Main />
