@@ -53,20 +53,21 @@
         -webkit-margin-start: 0;
         -webkit-margin-end: 0;
     }
+}
 
-    .noWidth{
-        max-width: 0;
-        transition: max-width .3s;
-        overflow: hidden;
-    }
-    .noHeight{
-        max-height: 0;
-        transition: max-height .3s;
-        overflow: hidden;
-    }
+:global .noWidth{
+    max-width: 0;
+    transition: max-width .3s;
+    overflow: hidden;
+}
 
-    .noOpacity{
-        opacity: 0;
-        transition: opacity .3s;
-    }
+:global .noHeight{
+    max-height: 0;
+    transition: max-height .3s;
+    overflow: hidden;
+}
+
+:global .noOpacity{
+    opacity: 0;
+    transition: opacity .3s;
 }
