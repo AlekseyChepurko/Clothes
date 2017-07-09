@@ -1,0 +1,26 @@
+.common{
+  position: absolute;
+  left: 43px;
+  top: 35px;
+  background-color: #8f744a;
+  padding: 10px 8px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.menu__toggler-wrap{
+  display: flex;
+  flex-direction: column;
+  width: 20px;
+  }
+
+.line{
+  background: white;
+  width: 20px;
+  height: 3px;
+  margin: 0 0 3px 0;
+  &:last-child{
+    margin: 0;
+  }
+}

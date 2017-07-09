@@ -6,7 +6,7 @@ import './main.css'
 class RightMenu extends Component {
     render(){
         return <section styleName="bold common">
-            <p styleName="cost">{this.props.cost}</p>
+            <p styleName="cost">{this.props.cost}$</p>
             <a styleName="account">l</a>
             <button styleName="language">language</button>
         </section>

@@ -6,7 +6,9 @@
     padding: 0 125px;
     text-transform: uppercase;
     min-height: 100px;
-
+    @media (width < 1200px) {
+        padding: 0 40px;
+    }
     >*{
          display: flex;
          flex-direction: row;

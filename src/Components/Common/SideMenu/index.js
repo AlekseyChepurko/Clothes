@@ -3,11 +3,13 @@
  */
 
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
 class SideMenu extends Component {
     render(){
         return <nav></nav>
     }
 }
+const mapStateToProps = (state)=>({});
 
-export default SideMenu
+export default connect(mapStateToProps)(SideMenu)

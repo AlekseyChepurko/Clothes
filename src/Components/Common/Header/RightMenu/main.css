@@ -20,13 +20,9 @@
 .cost{
     margin-right: 30px;
     display: inline-block;
-    min-width: 200px;
+    //min-width: 200px;
     text-align: right;
-    &:after{
-        content: "$";
-        display: inline-block;
-        margin-left: 3px;
-     }
+
 }
 
 .bold{

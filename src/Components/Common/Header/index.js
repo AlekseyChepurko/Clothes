@@ -4,6 +4,7 @@
 
 import React,{Component} from 'react'
 import logoImg from  "./logo.png"
+import MenuToggler from './MenuToggler'
 import LeftMenu from './LeftMenu'
 import RightMenu from './RightMenu'
 import './main.css'
@@ -17,9 +18,10 @@ const Logo = ()=> <div styleName="logo__block_wrap">
 class Header extends Component {
     render(){
         return <header styleName="common">
-            <LeftMenu/>
-            <Logo/>
-            <RightMenu/>
+            <MenuToggler />
+            <LeftMenu />
+            <Logo />
+            <RightMenu />
         </header>
     }
 }
