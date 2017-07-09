@@ -3,6 +3,7 @@
  */
 
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import ItemSelect from './ItemSelect'
 import ItemSettings from './ItemSettings'
 import './main.css'
@@ -10,10 +11,12 @@ class Constructor extends Component {
 
     render(){
         return <section styleName="common">
-            <ItemSelect/>
+            {this.props.sideMenuIsOpen
+            ? null
+            : <ItemSelect/>}
             <ItemSettings/>
         </section>
     }
 }
-
-export default Constructor;
+const mapStateToProps = (state)=>({sideMenuIsOpen: state.sideMenu.isOpen});
+export default connect(mapStateToProps)(Constructor);
