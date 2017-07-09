@@ -4,13 +4,14 @@
 import React,{Component} from 'react'
 import Header from './Header'
 import SideMenu from './SideMenu'
+import './main.css'
 
 
 class Common extends Component {
     render(){
-        return <section>
+        return <section styleName="common">
             <SideMenu/>
-            <section>
+            <section styleName="content-wrap">
                 <Header/>
                 {this.props.children}
             </section>
