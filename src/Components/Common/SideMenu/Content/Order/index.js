@@ -23,7 +23,7 @@ class ModeItem extends Component {
     render(){
         const {_this, tab} = this.props;
         return  <button
-            styleName="order__modeSwitcher_item"
+            styleName={`order__modeSwitcher_item ${_this.state.activeTab.name === tab.name ? 'active' : ''}`}
             onClick={()=>{_this.setState({activeTab: tab})}} >
             {tab.name}</button>
     }
