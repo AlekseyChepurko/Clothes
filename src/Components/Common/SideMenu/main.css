@@ -1,0 +1,17 @@
+.menu-wrap{
+  min-width: 290px;
+  margin: 25px 45px 35px 45px;
+  box-sizing: border-box;
+}
+
+.open{
+  max-width: 380px;
+  transition: max-width .3s;
+  overflow: visible;
+}
+.common{
+  background: #666666;
+}
+.preClose{
+  max-width: 0;
+}

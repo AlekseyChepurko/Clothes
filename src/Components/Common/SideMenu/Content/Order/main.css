@@ -1,0 +1,19 @@
+.order__modeSwitcher_wrap{
+  display: flex;
+  flex-direction: row;
+}
+
+.order__modeSwitcher_item{
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border: 2px solid white;
+  padding: 9px 0;
+  margin: 0 7px 0 0;
+
+  &:last-child{
+    margin: 0;
+  }
+}
+

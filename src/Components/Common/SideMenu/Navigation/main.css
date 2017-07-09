@@ -1,0 +1,21 @@
+.navigation-wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  //padding: 0 30px;
+}
+
+.navigation__link-item{
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+  transition: transform .3s;
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+
+.navigation__link-image{
+  max-height: 31px;
+}
