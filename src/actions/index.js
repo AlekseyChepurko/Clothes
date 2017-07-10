@@ -10,3 +10,8 @@ export const openSideMenu =()=>({
 export const closeSideMenu =()=>({
     type: actions.CLOSE_SIDE_MENU
 });
+
+export const changeLanguage = (lang) =>({
+    type: actions.CHANGE_LANGUAGE,
+    lang
+});
