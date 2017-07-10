@@ -7,13 +7,15 @@ import {changeLanguage} from 'Root/actions'
 import {languages} from 'Root/constants/languages'
 import {locale} from './locale'
 import './main.css'
+import loginImg from './images/login.png'
+import downArrow from './images/down.png'
 
 class RightMenu extends Component {
     render(){
         const {cost, locale, lang, changeLanguage } = this.props;
         return <section styleName="bold common">
             <p styleName="cost">{cost}{locale[lang].money}</p>
-            <a styleName="account">l</a>
+            <a styleName="account"><img src={loginImg} alt="login"/></a>
             <LanguageChoice changeLanguage={changeLanguage}/>
         </section>
     }
@@ -31,7 +33,10 @@ class LanguageChoice extends Component {
         return <section styleName="choice-wrap">
             <button
                 onClick={(()=>{this.setState({langChoiceOpen: !langChoiceOpen})}).bind(this)}
-                styleName="language">language</button>
+                styleName="language">
+                <p>language</p>
+                <img src={downArrow} alt="arrow"/>
+            </button>
             <LanguageList open={langChoiceOpen} changeLanguage={changeLanguage} />
         </section>
     }

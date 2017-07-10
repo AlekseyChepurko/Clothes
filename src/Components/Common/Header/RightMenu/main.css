@@ -6,12 +6,18 @@
 }
 
 .language{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     text-align: center;
     background: #8f744a;
     border-radius: 7px;
     min-width: 140px;
     min-height: 60px;
+    p{
+        margin: 0 .7rem 0 0;
+    }
 }
 
 .choice-wrap{
