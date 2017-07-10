@@ -21,7 +21,7 @@ class MenuToggler extends Component {
 
     render() {
         const {isOpen} = this.props;
-        return <section styleName="common" onClick={()=>{this.toggleMenu(isOpen)}}>
+        return <section styleName={`common ${isOpen ? 'common-open' : ''}`} onClick={()=>{this.toggleMenu(isOpen)}}>
             <section styleName={`menu__toggler-wrap ${isOpen ? 'opened' : ''}`}>
                 <div styleName="line"></div>
                 <div styleName="line"></div>

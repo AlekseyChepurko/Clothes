@@ -1,12 +1,16 @@
 .common{
   position: absolute;
   left: 0;
-  top: 35px;
-  //background-color: #8f744a;
+  top: 40px;
   padding: 10px 8px;
+  transition: left .1s;
   &:hover{
     cursor: pointer;
   }
+}
+
+.common-open{
+  left: 300px;
 }
 
 .menu__toggler-wrap{
@@ -18,13 +22,14 @@
 .line{
   background: #8f744a;
   width: 20px;
-  height: 3px;
-  margin: 0 0 3px 0;
+  height: 2px;
+  margin: 0 0 5px 0;
   transition: background-color .3s;
   &:last-child{
     margin: 0;
   }
 }
+
 
 .opened{
   .line{
