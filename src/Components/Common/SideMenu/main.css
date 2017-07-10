@@ -5,9 +5,9 @@
 }
 
 .open{
-  max-width: 380px;
-  transition: max-width .3s;
-  overflow: visible;
+  min-width: 380px;
+  transition: min-width .3s;
+  //overflow: visible;
 }
 .common{
   background: #666666;
