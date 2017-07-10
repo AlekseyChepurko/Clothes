@@ -1,0 +1,27 @@
+.menu-wrap{
+  color: white;
+}
+
+.menu-item{
+  text-transform: uppercase;
+  line-height: 2.5em;
+  font-size: .95em;
+  border-top: 1px solid #5c5c5c;
+  padding: 0 0 0 .35rem;
+  
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.hiding{
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height .3s;
+}
+
+.open{
+}
+.close{
+  max-height: 0;
+}
