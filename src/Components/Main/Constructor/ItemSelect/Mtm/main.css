@@ -64,6 +64,9 @@
       margin: 0 20px 20px 0;
       min-width: 100px;
       height: 150px;
+      &:nth-child(3), &:nth-child(4){
+        height: 150px;
+      }
     }
 }
 
