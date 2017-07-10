@@ -10,6 +10,9 @@
         .language{
             min-height: 0;
         }
+        .account{
+            //display: none;
+        }
     }
 }
 
@@ -23,6 +26,9 @@
     border-radius: 7px;
     min-width: 140px;
     min-height: 60px;
+    @media (width < 750px) {
+        margin: 0 0 1rem 0;
+    }
     p{
         margin: 0 .7rem 0 0;
     }
@@ -60,14 +66,18 @@
 }
 .account{
     margin-right: 30px;
+    @media (width < 750px) {
+        display: none;
+    }
 }
 
 .cost{
     margin-right: 30px;
     display: inline-block;
-    //min-width: 200px;
     text-align: right;
-
+    @media (width < 750px) {
+        display: none;
+    }
 }
 
 .bold{
