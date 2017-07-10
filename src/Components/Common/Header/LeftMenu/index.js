@@ -8,7 +8,7 @@ import './main.css'
 class LeftMenu extends Component {
     render(){
         const {sideMenuIsOpen, lang} = this.props;
-        return <section styleName="common">
+        return <section styleName="common order-second" >
             <a styleName="order__button"><p>{locale[lang].order}</p></a>
             {sideMenuIsOpen
                 ? null

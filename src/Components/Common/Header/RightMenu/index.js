@@ -13,7 +13,7 @@ import downArrow from './images/down.png'
 class RightMenu extends Component {
     render(){
         const {cost, locale, lang, changeLanguage } = this.props;
-        return <section styleName="bold common">
+        return <section styleName="bold common order-third">
             <p styleName="cost">{cost}{locale[lang].money}</p>
             <a styleName="account"><img src={loginImg} alt="login"/></a>
             <LanguageChoice changeLanguage={changeLanguage}/>

@@ -4,6 +4,14 @@
     flex-direction: row;
     align-items: center;
 }
+.order-third{
+    @media (width < 640px) {
+        order: 3;
+        .language{
+            min-height: 0;
+        }
+    }
+}
 
 .language{
     display: flex;

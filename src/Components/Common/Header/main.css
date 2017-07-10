@@ -9,12 +9,25 @@
     @media (width < 1200px) {
         padding: 0 40px;
     }
+    @media (width < 640px) {
+        flex-direction: column;
+    }
     >*{
          display: flex;
          flex-direction: row;
          justify-content: space-between;
      }
 }
+
+.order-first{
+    @media (width < 640px) {
+        order: 1;
+        justify-content: center;
+        min-height: 4rem;
+    }
+}
+
+
 
 .logo__block_wrap{
     display: flex;
