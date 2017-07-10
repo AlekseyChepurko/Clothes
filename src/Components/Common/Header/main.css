@@ -13,9 +13,11 @@
         flex-direction: column;
     }
     >*{
-         display: flex;
-         flex-direction: row;
-         justify-content: space-between;
+        @media (width > 750px) {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
      }
 }
 

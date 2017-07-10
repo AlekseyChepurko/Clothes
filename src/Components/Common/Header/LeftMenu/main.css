@@ -1,13 +1,9 @@
 .common{
     align-items: center;
-}
-
-.order-second{
-    @media (width < 640px) {
-        order: 2;
+    @media (width < 750px) {
+        display: none;
     }
 }
-
 .order__button{
     display: flex;
     flex-direction: column;
