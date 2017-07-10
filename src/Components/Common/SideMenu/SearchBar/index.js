@@ -2,6 +2,7 @@
  * Created by Алексей on 09.07.2017.
  */
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import './main.css'
 
 const locale = {
@@ -22,4 +23,4 @@ SearchBar.defaultProps = {
     lang: 'en'
 };
 
-export default SearchBar
+export default connect((state)=>({lang: state.language.lang}))(SearchBar)
