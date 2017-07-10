@@ -1,4 +1,5 @@
 .common{
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -13,6 +14,36 @@
     min-height: 60px;
 }
 
+.choice-wrap{
+    position: relative;
+}
+.languageList-wrap{
+    position: absolute;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 5px 0 0 0;
+    box-shadow: inset 0 0 0 2px #8f744a;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: white;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s;
+}
+
+.language__list-item{
+    line-height: 2.5rem;
+    text-decoration: underline;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.open{
+    max-height: 1000px;
+}
 .account{
     margin-right: 30px;
 }
