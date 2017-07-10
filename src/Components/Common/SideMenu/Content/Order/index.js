@@ -23,8 +23,8 @@ class ModeItem extends Component {
     render(){
         const {_this, tab} = this.props;
         return  <button
-            styleName={`order__modeSwitcher_item ${_this.state.activeTab.name === tab.name ? 'active' : ''}`}
-            onClick={()=>{_this.setState({activeTab: tab})}} >
+            styleName={`order__modeSwitcher_item ${_this.state.activeTab.name === tab.tab.name ? 'active' : ''}`}
+            onClick={()=>{_this.setState({activeTab: tab.tab})}} >
             {tab.name}</button>
     }
 }
@@ -38,7 +38,7 @@ class Order extends Component {
     }
     render() {
         return <section>
-            <ModeSwitcher _this={this} tabs={[Mtm, Rtw]}/>
+            <ModeSwitcher _this={this} tabs={[{name: 'mtm', tab: Mtm}, {name: 'rtw', tab: Rtw}]}/>
             {React.createElement(this.state.activeTab)}
         </section>
     }
