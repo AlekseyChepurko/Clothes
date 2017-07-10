@@ -2,6 +2,7 @@
  * Created by Алексей on 08.07.2017.
  */
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {locale} from './locale'
 import './main.css'
 
@@ -19,4 +20,7 @@ OrderControls.defaultProps = {
     lang: "en"
 };
 
-export default OrderControls
+const mapStateToProps = (state)=>({
+    lang: state.language.lang
+});
+export default connect(mapStateToProps)(OrderControls)
