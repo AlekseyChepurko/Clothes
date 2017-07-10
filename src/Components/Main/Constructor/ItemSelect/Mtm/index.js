@@ -3,6 +3,7 @@
  */
 
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Isvg from 'react-inlinesvg'
 import {locale} from './locale'
 import './main.css'
@@ -37,16 +38,21 @@ class Item extends Component {
         </li>
     }
 }
-Item.defaultProps = {
-    lang: "en"
-};
 
 class Mtm extends Component {
     render(){
+        const {lang} = this.props;
         return <ul styleName="common">
-            {items.map((item,index) => <Item item={item} key={index}/>)}
+            {items.map((item,index) =>
+                <Item
+                    lang={lang}
+                    item={item}
+                    key={index}/>)}
         </ul>
     }
 }
 
-export default Mtm;
+const mapStateToProps = (state)=>({
+    lang: state.language.lang
+});
+export default connect(mapStateToProps)(Mtm);
