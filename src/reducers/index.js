@@ -4,7 +4,9 @@
 
 import {combineReducers} from 'redux'
 import sideMenu from './SideMenu'
+import language from './Language'
 
 export default combineReducers({
-    sideMenu
+    sideMenu,
+    language
 })
