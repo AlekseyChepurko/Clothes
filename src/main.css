@@ -57,7 +57,8 @@
 
 :global .noWidth{
     max-width: 0;
-    transition: max-width .3s;
+    min-width: 0;
+    transition: min-width .3s;
     overflow: hidden;
 }
 
