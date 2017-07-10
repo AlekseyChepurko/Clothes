@@ -1,0 +1,16 @@
+.info-wrap{
+  display: none;
+  position: fixed;
+  bottom: 0;
+  padding: 0 40px;
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 2.5rem;
+  color: white;
+  background: rgba(0,0,0,.9);
+  @media (width < 750px){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

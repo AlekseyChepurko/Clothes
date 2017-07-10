@@ -5,6 +5,7 @@ import React,{Component} from 'react'
 import Common from 'Common'
 import Preview from './Preview'
 import Constructor from "./Constructor";
+import MobileInfo from './MobileInfo'
 import './main.css'
 
 class Main extends Component {
@@ -14,6 +15,7 @@ class Main extends Component {
             <section styleName="common">
                 <Constructor />
                 <Preview/>
+                <MobileInfo />
             </section>
         </Common>
         )
