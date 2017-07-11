@@ -25,7 +25,8 @@
     background: #8f744a;
     border-radius: 7px;
     min-width: 140px;
-    min-height: 60px;
+    min-height: 6vh;
+    max-height: 60px;
     @media (width < 750px) {
         margin: 0 0 1rem 0;
     }

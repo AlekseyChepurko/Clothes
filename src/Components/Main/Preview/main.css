@@ -1,12 +1,12 @@
 .preview-wrap{
   //display: flex;
   position: relative;
-  min-width: 450px;
+  min-width: 300px;
   width: 35%;
-  margin: 20px 0 0 0;
 }
 
 .preview__dummy-img{
   display: block;
   margin: auto;
+  height: 83vh;
 }
