@@ -2,11 +2,13 @@
  * Created by Алексей on 08.07.2017.
  */
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Mtm from './Content/Mtm'
 import Rtw from './Content/Rtw'
 import './main.css'
+import HideButton from "./HideButton/index";
 
-class Item  extends Component {
+class Item  extends Component{
     render(){
         const {name, active, onClick} = this.props;
         return <button
@@ -34,19 +36,26 @@ class ItemSelect extends Component {
         });
     };
     render(){
+        const {isOpen} = this.props;
         return <section styleName="common">
-            <section styleName="constructor__choice-wrap">
-                <Item name="mtm" active={this.state.activeTab} onClick={this.changeActive}/>
-                <Item name="rtw" active={this.state.activeTab} onClick={this.changeActive} />
-            </section>
-            <section>
-                {this.state.activeTab === "mtm"
-                    ? <Mtm />
-                    : <Rtw />
-                }
+            <HideButton />
+            <section styleName={`settings__block_wrap ${isOpen ? '' : 'closed'}`}>
+                <section styleName="constructor__choice-wrap">
+                    <Item name="mtm" active={this.state.activeTab} onClick={this.changeActive}/>
+                    <Item name="rtw" active={this.state.activeTab} onClick={this.changeActive} />
+                </section>
+                <section>
+                    {this.state.activeTab === "mtm"
+                        ? <Mtm />
+                        : <Rtw />
+                    }
+                </section>
             </section>
         </section>
     }
 }
 
-export default ItemSelect
+const mapStateToProps = (state)=>({
+    isOpen: state.itemSelectMenu.isOpen,
+});
+export default connect(mapStateToProps)(ItemSelect);

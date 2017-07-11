@@ -1,4 +1,9 @@
 .common{
+  display: flex;
+  flex-direction: row;
+}
+
+.settings__block_wrap{
   width: 360px;
   margin: 0 30px 0 0;
   @media (width < 1200px) {
@@ -10,9 +15,8 @@
 .constructor__choice-wrap{
     display: flex;
     flex-direction: row;
-    margin: 0 0 20px 0;
 }
-
+.closed{}
 .constructor__choice{
     font-weight: bold;
     text-transform: uppercase;
