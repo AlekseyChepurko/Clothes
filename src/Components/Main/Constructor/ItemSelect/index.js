@@ -39,7 +39,7 @@ class ItemSelect extends Component {
         const {isOpen} = this.props;
         return <section styleName="common">
             <HideButton />
-            <section styleName={`hiding ${isOpen ? 'opened' : 'closed'}`}>
+            <section styleName={`hiding ${isOpen ? '' : 'closed'}`}>
                 <section styleName={`settings__block_wrap`}>
                     <section styleName="constructor__choice-wrap">
                         <Item name="mtm" active={this.state.activeTab} onClick={this.changeActive}/>

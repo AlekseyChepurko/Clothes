@@ -16,7 +16,7 @@ class MenuToggler extends Component {
     toggleMenu(state){
         state
             ? this.props.closeSideMenu()
-            : (()=>{this.props.openSideMenu(); this.props.closeItemsSelectMenu() })()
+            : (()=>{this.props.openSideMenu() })()
     }
 
     render() {
