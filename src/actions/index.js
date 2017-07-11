@@ -15,3 +15,7 @@ export const changeLanguage = (lang) =>({
     type: actions.CHANGE_LANGUAGE,
     lang
 });
+
+export const toggleItemsSelectMenu = () => ({
+    type: actions.TOGGLE_ITEMS_SELECT_MENU
+});
