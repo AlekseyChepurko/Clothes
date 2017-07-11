@@ -1,7 +1,7 @@
 .common{
   position: absolute;
-  left: 0;
-  top: 40px;
+  left: 40px;
+  top: 32px;
   padding: 10px 8px;
   transition: left .1s;
   &:hover{
@@ -10,7 +10,7 @@
 }
 
 .common-open{
-  left: 300px;
+  left: 40px;
 }
 
 .menu__toggler-wrap{
