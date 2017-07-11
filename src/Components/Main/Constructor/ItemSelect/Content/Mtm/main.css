@@ -51,7 +51,7 @@
     height: 193px;
     width: 169px;
     padding: 30px 20px;
-    margin: 0 0 20px 0;
+    margin: 20px 0 0 0;
     box-sizing: border-box;
     border: 1px solid black;
     &:nth-child(2n+1){
