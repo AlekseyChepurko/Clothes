@@ -26,7 +26,7 @@ class ItemSelect extends Component {
     constructor(props){
         super(props);
         this.state = {
-            activeTab: "mtm"
+            activeTab: "mtm",
         };
         this.changeActive = this.changeActive.bind(this);
     };
@@ -39,16 +39,18 @@ class ItemSelect extends Component {
         const {isOpen} = this.props;
         return <section styleName="common">
             <HideButton />
-            <section styleName={`settings__block_wrap ${isOpen ? '' : 'closed'}`}>
-                <section styleName="constructor__choice-wrap">
-                    <Item name="mtm" active={this.state.activeTab} onClick={this.changeActive}/>
-                    <Item name="rtw" active={this.state.activeTab} onClick={this.changeActive} />
-                </section>
-                <section>
-                    {this.state.activeTab === "mtm"
-                        ? <Mtm />
-                        : <Rtw />
-                    }
+            <section styleName={`hiding ${isOpen ? 'opened' : 'closed'}`}>
+                <section styleName={`settings__block_wrap`}>
+                    <section styleName="constructor__choice-wrap">
+                        <Item name="mtm" active={this.state.activeTab} onClick={this.changeActive}/>
+                        <Item name="rtw" active={this.state.activeTab} onClick={this.changeActive} />
+                    </section>
+                    <section>
+                        {this.state.activeTab === "mtm"
+                            ? <Mtm />
+                            : <Rtw />
+                        }
+                    </section>
                 </section>
             </section>
         </section>

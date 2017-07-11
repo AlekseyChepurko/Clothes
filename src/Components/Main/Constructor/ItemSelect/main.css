@@ -12,11 +12,20 @@
   }
 }
 
+.hiding{
+  transition: max-width .3s;
+  overflow: hidden;
+  max-width: 500px;
+}
+
+.closed{
+  max-width: 0;
+}
+
 .constructor__choice-wrap{
     display: flex;
     flex-direction: row;
 }
-.closed{}
 .constructor__choice{
     font-weight: bold;
     text-transform: uppercase;
