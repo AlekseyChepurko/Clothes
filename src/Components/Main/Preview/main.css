@@ -1,7 +1,8 @@
 .preview-wrap{
   //display: flex;
   position: relative;
-  width: 372px;
+  min-width: 450px;
+  width: 35%;
   margin: 20px 0 0 0;
 }
 
