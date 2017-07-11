@@ -1,6 +1,7 @@
 .common{
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     justify-content: space-between;
     max-height: 84vh;
     //height: 83vh;
@@ -10,7 +11,7 @@
     background: #e9e9e9;
     @media (width < 1200px) {
         flex-direction: column;
-        align-items: center;
+        //align-items: center;
         max-height: initial;
     }
     @media (width < 1281px) {

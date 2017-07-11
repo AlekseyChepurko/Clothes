@@ -6,9 +6,7 @@
 .settings__block_wrap{
   width: 19.1vw;
   margin: 0 20px 0 0;
-  media (width <= 1280px) {
-    width: 270px;
-  }
+
   @media (width < 1200px) {
     width: 100%;
     margin: 0;
@@ -29,6 +27,9 @@
 .constructor__choice-wrap{
     display: flex;
     flex-direction: row;
+    @media (width < 1200px) {
+      margin-bottom: 2vh;
+    }
 }
 .constructor__choice{
     font-weight: bold;
