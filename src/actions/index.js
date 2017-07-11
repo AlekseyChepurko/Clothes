@@ -19,3 +19,7 @@ export const changeLanguage = (lang) =>({
 export const toggleItemsSelectMenu = () => ({
     type: actions.TOGGLE_ITEMS_SELECT_MENU
 });
+
+export const closeItemsSelectMenu = () => ({
+    type: actions.CLOSE_ITEMS_SELECT_MENU
+});
