@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {openSideMenu, closeSideMenu} from 'Root/actions'
+import {openSideMenu, closeSideMenu, closeItemsSelectMenu} from 'Root/actions'
 import './main.css'
 
 class MenuToggler extends Component {
@@ -16,7 +16,7 @@ class MenuToggler extends Component {
     toggleMenu(state){
         state
             ? this.props.closeSideMenu()
-            : this.props.openSideMenu()
+            : (()=>{this.props.openSideMenu(); this.props.closeItemsSelectMenu() })()
     }
 
     render() {
@@ -35,4 +35,4 @@ MenuToggler.defaultProps = {};
 
 const mapStateToProps = (state)=>({isOpen: state.sideMenu.isOpen});
 
-export default connect(mapStateToProps, {openSideMenu, closeSideMenu} )(MenuToggler)
+export default connect(mapStateToProps, {openSideMenu, closeSideMenu, closeItemsSelectMenu} )(MenuToggler)
