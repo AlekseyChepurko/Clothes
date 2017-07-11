@@ -13,12 +13,18 @@ class HideButton extends Component {
         return <button
             onClick={this.props.toggleItemsSelectMenu}
             styleName="select__visibility-button">
-            <img src={arrow} alt=""/>
+            <img
+                className="sss"
+                styleName={`${this.props.menuOpen ? 'menu-opened' : ''}`}
+                src={arrow}
+                alt="arrow"/>
         </button>
     }
 }
 
 HideButton.defaultProps = {};
 
-const mapState = (state)=>({});
+const mapState = (state)=>({
+    menuOpen: state.itemSelectMenu.isOpen
+});
 export default connect(mapState, {toggleItemsSelectMenu})(HideButton)
