@@ -37,7 +37,7 @@ class Order extends Component {
         }
     }
     render() {
-        return <section>
+        return <section styleName="sideMenu__order-section">
             <ModeSwitcher _this={this} tabs={[{name: 'mtm', tab: Mtm}, {name: 'rtw', tab: Rtw}]}/>
             {React.createElement(this.state.activeTab)}
         </section>

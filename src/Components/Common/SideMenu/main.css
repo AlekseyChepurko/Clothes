@@ -1,12 +1,12 @@
 .menu-wrap{
   //height: 100vh;
-  min-width: 290px;
+  min-width: 15vw;
   margin: 18px 45px 35px 45px;
   box-sizing: border-box;
 }
 
 .open{
-  min-width: 380px;
+  min-width: 20vw;
   transition: min-width .3s;
   //overflow: visible;
 }
