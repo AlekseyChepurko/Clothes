@@ -11,7 +11,10 @@
 }
 
 .common-open{
-  left: 40px;
+  //left: 40px;
+  @media(width < 800px){
+    //position: fixed;
+  }
 }
 
 .menu__toggler-wrap{
