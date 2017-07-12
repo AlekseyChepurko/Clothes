@@ -1,5 +1,6 @@
 .common{
   position: absolute;
+  z-index: 999;
   left: 40px;
   top: 3.3vh;
   padding: 10px 8px;

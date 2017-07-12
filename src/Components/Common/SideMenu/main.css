@@ -8,6 +8,12 @@
 .open{
   min-width: 20vw;
   transition: min-width .3s;
+  @media (width < 800px) {
+    position: fixed;
+    z-index: 999;
+    min-width: 100vw;
+    overflow: hidden;
+  }
   //overflow: visible;
 }
 .common{
