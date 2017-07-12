@@ -1,7 +1,7 @@
 .common{
   position: absolute;
   left: 40px;
-  top: 32px;
+  top: 3.3vh;
   padding: 10px 8px;
   transition: left .1s;
   &:hover{
