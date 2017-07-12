@@ -1,4 +1,6 @@
 .select__visibility-button{
+  position: absolute;
+  left: -37px;
   height: 100%;
   width: 25px;
   margin: 0 10px 0 0;

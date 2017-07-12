@@ -1,6 +1,7 @@
 .common{
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .settings__block_wrap{
