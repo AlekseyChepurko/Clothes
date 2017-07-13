@@ -7,12 +7,12 @@ export const locale = {
         show: "show",
         hide: "hide",
         add: "add",
-        delete: "delete"
+        remove: "delete"
     },
     ru:{
         show: "показать",
         hide: "спрятать",
         add: "добавить",
-        delete: "удалить"
+        remove: "удалить"
     }
 };
