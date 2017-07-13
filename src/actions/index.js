@@ -28,3 +28,13 @@ export const setActiveItem = (item) => ({
     type: actions.SET_ACTIVE_ITEM,
     item
 });
+
+export const addItem = (item) => ({
+    type: actions.ADD_ITEM,
+    item
+});
+
+export const removeItem = (item) => ({
+    type: actions.REMOVE_ITEM,
+    item
+});
