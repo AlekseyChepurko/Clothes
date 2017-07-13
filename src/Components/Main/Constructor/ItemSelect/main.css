@@ -8,6 +8,10 @@
   width: 19.1vw;
   margin: 0 20px 0 0;
 
+  @media (width < 1600px) {
+    width: 17.1vw;
+  }
+
   @media (width < 1200px) {
     width: 100%;
     margin: 0;
