@@ -6,15 +6,16 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Isvg from 'react-inlinesvg'
 import {locale} from './locale'
+import {setActiveItem} from 'Root/actions'
 import './main.css'
 
 const items = [
-    'jacket',
-    'shirt',
-    'trousers',
-    'coat',
-    'vest',
-    'tie'
+    {name:'jacket', type: 1},
+    {name:'shirt', type: 2},
+    {name:'trousers', type: 1},
+    {name:'coat', type: 1},
+    {name:'vest', type: 1},
+    {name:'tie', type: 2},
 ];
 
 class Item extends Component {
@@ -25,15 +26,16 @@ class Item extends Component {
         }
     }
     render(){
-        const {item, lang} = this.props;
-        const path = require(`./items/${item}.png`);
+        const {item, lang, isActive, onClick} = this.props;
+        const path = require(`./items/${item.name}.png`);
         return <li
-            styleName={`mtm__item-wrap ${this.state.hovered ? "hovered" : ""}`}
+            styleName={`mtm__item-wrap ${this.state.hovered ? "hovered" : ""} ${isActive ? "mtm__item-active" : ""}` }
+            onClick={()=>{onClick(item)}}
             onMouseEnter={(()=>{this.setState({hovered: true})}).bind(this)}
             onMouseLeave={ (()=>{this.setState({hovered: false})}).bind(this) }>
 
             <button className={`noOpacity`} styleName={`hiding top`}>{locale[lang].show}</button>
-            <img src={path} styleName={`${item} item`}/>
+            <img src={path} styleName={`${item.name} item`}/>
             <button className={`noOpacity`} styleName={`hiding bottom`}>{locale[lang].add}</button>
         </li>
     }
@@ -41,10 +43,12 @@ class Item extends Component {
 
 class Mtm extends Component {
     render(){
-        const {lang} = this.props;
+        const {lang, setActiveItem, activeItem} = this.props;
         return <ul styleName="common">
             {items.map((item,index) =>
                 <Item
+                    onClick={setActiveItem}
+                    isActive={item.name === activeItem.name}
                     lang={lang}
                     item={item}
                     key={index}/>)}
@@ -53,6 +57,7 @@ class Mtm extends Component {
 }
 
 const mapStateToProps = (state)=>({
-    lang: state.language.lang
+    lang: state.language.lang,
+    activeItem: state.itemSelectMenu.activeItem
 });
-export default connect(mapStateToProps)(Mtm);
+export default connect(mapStateToProps, {setActiveItem})(Mtm);
