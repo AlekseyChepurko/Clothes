@@ -16,8 +16,8 @@
     display: block;
     margin: auto;
 }
+
 .hovered{
-  border: 1px solid white;
     button{
         opacity: 1;
         transition: opacity .3s, background-color .3s;
@@ -56,6 +56,9 @@
     margin: 3vh 0 0 0;
     box-sizing: border-box;
     border: 1px solid black;
+    &:hover{
+      cursor: pointer;
+    }
     &:nth-child(2n+1){
          margin-right: 1vw;
      }
@@ -73,13 +76,14 @@
       padding: 10px;
       margin: 0 20px 20px 0;
       min-width: 100px;
-      //height: 150px;
       height: 15vh;
       &:nth-child(3), &:nth-child(4){
-        //height: 150px;
         height: 15vh;
       }
     }
+}
+.mtm__item-active{
+  border-color: #8f7449;
 }
 
 .jacket {}
