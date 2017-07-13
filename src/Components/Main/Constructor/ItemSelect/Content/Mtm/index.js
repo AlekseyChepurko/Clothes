@@ -4,11 +4,13 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import _ from 'lodash'
 import Isvg from 'react-inlinesvg'
 import {locale} from './locale'
-import {setActiveItem} from 'Root/actions'
+import {setActiveItem,addItem, removeItem} from 'Root/actions'
 import './main.css'
 
+// TODO admin connection add
 const items = [
     {name:'jacket', type: 1},
     {name:'shirt', type: 2},
@@ -18,6 +20,33 @@ const items = [
     {name:'tie', type: 2},
 ];
 
+class Mtm extends Component {
+    render(){
+        const {
+            lang,
+            setActiveItem,
+            activeItem,
+            chosenItems,
+            addItem,
+            removeItem} = this.props;
+        return <ul styleName="common">
+            {items.map((item,index) =>
+            {
+                return <Item
+                    onClick={setActiveItem}
+                    addItem={addItem}
+                    removeItem={removeItem}
+                    isActive={item.name === activeItem.name}
+                    isAdded={_.intersection(chosenItems, [item]).length !== 0}
+                    lang={lang}
+                    item={item}
+                    key={index}/>
+            })
+            }
+        </ul>
+    }
+}
+
 class Item extends Component {
     constructor(props){
         super(props);
@@ -26,7 +55,14 @@ class Item extends Component {
         }
     }
     render(){
-        const {item, lang, isActive, onClick} = this.props;
+        const {
+            item,
+            lang,
+            isActive,
+            isAdded,
+            onClick,
+            addItem,
+            removeItem} = this.props;
         const path = require(`./items/${item.name}.png`);
         return <li
             styleName={`mtm__item-wrap ${this.state.hovered ? "hovered" : ""} ${isActive ? "mtm__item-active" : ""}` }
@@ -34,30 +70,36 @@ class Item extends Component {
             onMouseEnter={(()=>{this.setState({hovered: true})}).bind(this)}
             onMouseLeave={ (()=>{this.setState({hovered: false})}).bind(this) }>
 
-            <button className={`noOpacity`} styleName={`hiding top`}>{locale[lang].show}</button>
+            {/*TODO set visibility filter*/}
+            <button
+                className={`noOpacity`}
+                styleName={`hiding top`}>{locale[lang].show}</button>
+
             <img src={path} styleName={`${item.name} item`}/>
-            <button className={`noOpacity`} styleName={`hiding bottom`}>{locale[lang].add}</button>
+
+            <AddAndRemoveButton
+                className={`noOpacity`}
+                item={item}
+                onClick={isAdded ? removeItem : addItem}
+                styleName={`hiding bottom`}> {locale[lang][`${isAdded ? "remove" : "add"}`]} </AddAndRemoveButton>
         </li>
     }
 }
 
-class Mtm extends Component {
+class AddAndRemoveButton extends Component{
     render(){
-        const {lang, setActiveItem, activeItem} = this.props;
-        return <ul styleName="common">
-            {items.map((item,index) =>
-                <Item
-                    onClick={setActiveItem}
-                    isActive={item.name === activeItem.name}
-                    lang={lang}
-                    item={item}
-                    key={index}/>)}
-        </ul>
-    }
+        const {item, onClick} = this.props;
+        return <button
+            onClick={(e)=>{e.stopPropagation(); onClick(item)}}
+            className={`noOpacity`}
+            styleName={`hiding bottom`}>{this.props.children}</button>
 }
+}
+
 
 const mapStateToProps = (state)=>({
     lang: state.language.lang,
-    activeItem: state.itemSelectMenu.activeItem
+    activeItem: state.itemSelectMenu.activeItem,
+    chosenItems: state.itemSelectMenu.addedItems
 });
-export default connect(mapStateToProps, {setActiveItem})(Mtm);
+export default connect(mapStateToProps, {setActiveItem, addItem, removeItem})(Mtm);
