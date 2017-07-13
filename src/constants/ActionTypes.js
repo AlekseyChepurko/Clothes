@@ -15,3 +15,5 @@ export const CLOSE_ITEMS_SELECT_MENU = 'CLOSE_ITEMS_SELECT_MENU';
 
 // Item select
 export const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
+export const ADD_ITEM = 'ADD_ITEM';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
