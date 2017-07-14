@@ -68,8 +68,8 @@ class Item extends Component {
         return <li
             styleName={`mtm__item-wrap ${this.state.hovered ? "hovered" : ""} ${isActive ? "mtm__item-active" : ""}` }
             onClick={()=>{onClick(item)}}
-            onMouseEnter={(()=>{this.setState({hovered: true})}).bind(this)}
-            onMouseLeave={ (()=>{this.setState({hovered: false})}).bind(this) }>
+            onMouseEnter={(()=>{this.setState({hovered: true})})}
+            onMouseLeave={ (()=>{this.setState({hovered: false})})}>
 
             {/*TODO set visibility filter*/}
             <button
