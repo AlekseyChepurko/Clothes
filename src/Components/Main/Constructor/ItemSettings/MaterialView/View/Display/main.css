@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   height: 100%;
-  padding: 0 5%;
+  margin: 0 5%;
   overflow: auto;
 
   .material__item{
