@@ -19,16 +19,19 @@
   color: #bdbdbd;
   border-right: 2px solid #afafaf;
 
+  &:hover{
+    cursor: pointer;
+  }
+  &:last-child{
+    border: none;
+  }
+  
   @media (width < 600px){
     justify-content: center;
     width: 100%;
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid #afafaf;
-  }
-
-  &:last-child{
-    border: none;
   }
 }
 
