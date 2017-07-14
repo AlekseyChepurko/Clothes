@@ -8,9 +8,12 @@ import './main.css'
 
 class Display extends Component {
     render() {
-        return <section>
-            <img src={im} alt=""/>
-
+        return <section styleName="material__items-wrap">
+            <img src={im} styleName="material__item" alt=""/>
+            <img src={im} styleName="material__item" alt=""/>
+            <img src={im} styleName="material__item" alt=""/>
+            <img src={im} styleName="material__item" alt=""/>
+            <img src={im} styleName="material__item" alt=""/>
         </section>
     }
 }
