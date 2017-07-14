@@ -1,5 +1,4 @@
 .wrap{
-  //min-width: 800px;
   width: 100%;
   @media (width < 1200px) {
     min-width: 0;
