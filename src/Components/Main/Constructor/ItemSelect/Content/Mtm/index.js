@@ -6,19 +6,20 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import _ from 'lodash'
 import Isvg from 'react-inlinesvg'
+import {items} from 'Root/constants/SelectItems'
 import {locale} from './locale'
 import {setActiveItem,addItem, removeItem} from 'Root/actions'
 import './main.css'
 
 // TODO admin connection add
-const items = [
-    {name:'jacket', type: 1},
-    {name:'shirt', type: 2},
-    {name:'trousers', type: 1},
-    {name:'coat', type: 1},
-    {name:'vest', type: 1},
-    {name:'tie', type: 2},
-];
+// const items = [
+//     {name:'jacket', type: 1},
+//     {name:'shirt', type: 2},
+//     {name:'trousers', type: 1},
+//     {name:'coat', type: 1},
+//     {name:'vest', type: 1},
+//     {name:'tie', type: 2},
+// ];
 
 class Mtm extends Component {
     render(){
