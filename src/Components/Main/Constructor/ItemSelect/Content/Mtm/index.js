@@ -100,7 +100,7 @@ class AddAndRemoveButton extends Component{
 
 const mapStateToProps = (state)=>({
     lang: state.language.lang,
-    activeItem: state.itemSelectMenu.activeItem,
-    chosenItems: state.itemSelectMenu.addedItems
+    activeItem: state.Constructor.itemSelectMenu.activeItem,
+    chosenItems: state.Constructor.itemSelectMenu.addedItems
 });
 export default connect(mapStateToProps, {setActiveItem, addItem, removeItem})(Mtm);

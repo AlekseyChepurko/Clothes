@@ -25,6 +25,6 @@ class HideButton extends Component {
 HideButton.defaultProps = {};
 
 const mapState = (state)=>({
-    menuOpen: state.itemSelectMenu.isOpen
+    menuOpen: state.Constructor.itemSelectMenu.isOpen
 });
 export default connect(mapState, {toggleItemsSelectMenu})(HideButton)

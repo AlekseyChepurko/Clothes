@@ -58,6 +58,6 @@ class ItemSelect extends Component {
 }
 
 const mapStateToProps = (state)=>({
-    isOpen: state.itemSelectMenu.isOpen,
+    isOpen: state.Constructor.itemSelectMenu.isOpen,
 });
 export default connect(mapStateToProps)(ItemSelect);

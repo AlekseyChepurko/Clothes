@@ -31,7 +31,7 @@ Navigation.defaultProps = {
 
 const mapStateToProps = (state)=>({
     lang: state.language.lang,
-    chosenItems: state.itemSelectMenu.addedItems,
-    activeItem: state.itemSelectMenu.activeItem,
+    chosenItems: state.Constructor.itemSelectMenu.addedItems,
+    activeItem: state.Constructor.itemSelectMenu.activeItem,
 });
 export default connect(mapStateToProps, {setActiveItem})(Navigation)

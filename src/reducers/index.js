@@ -5,10 +5,11 @@
 import {combineReducers} from 'redux'
 import sideMenu from './SideMenu'
 import language from './Language'
-import itemSelectMenu from './itemSelectMenu'
+import Constructor from './Constructor'
+// import itemSelectMenu from './itemSelectMenu'
 
 export default combineReducers({
     sideMenu,
     language,
-    itemSelectMenu
+    Constructor
 })
