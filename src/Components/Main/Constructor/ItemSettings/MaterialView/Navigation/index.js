@@ -3,6 +3,8 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {setActiveItem,addItem, removeItem} from 'Root/actions'
+import {items} from 'Root/constants/SelectItems'
 import {locale} from './locale'
 import './main.css'
 
@@ -11,7 +13,11 @@ class Navigation extends Component {
         const {chosenItems, activeItem, lang} = this.props;
         return <ul styleName="wrap">
             {chosenItems.map((item,index)=>
-                <li styleName={`item${activeItem.name === item.name ?' active':''}`}
+                <li
+                    onClick={()=>{this.props.setActiveItem(items.find(
+                        (elem)=>elem.name === item.name
+                    ))}}
+                    styleName={`item${activeItem.name === item.name ?' active':''}`}
                     key={index}>
                         {locale[lang][item.name]}
                 </li>)}
@@ -28,4 +34,4 @@ const mapStateToProps = (state)=>({
     chosenItems: state.itemSelectMenu.addedItems,
     activeItem: state.itemSelectMenu.activeItem,
 });
-export default connect(mapStateToProps)(Navigation)
+export default connect(mapStateToProps, {setActiveItem})(Navigation)
