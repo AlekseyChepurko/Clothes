@@ -3,10 +3,13 @@
   flex-direction: row;
   align-items: center;
   height: 100%;
-  padding: 0 10%;
+  padding: 0 5%;
   overflow: auto;
 
   .material__item{
+    width: 100%;
     margin-right: 5vw;
+    cursor: pointer;
+    display: inline-block;
   }
 }
