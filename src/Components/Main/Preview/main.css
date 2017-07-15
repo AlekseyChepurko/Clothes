@@ -3,6 +3,7 @@
   position: relative;
   min-width: 300px;
   width: 35%;
+  cursor: pointer;
 }
 
 .preview__dummy-img{
