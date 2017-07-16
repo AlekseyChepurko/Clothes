@@ -25,18 +25,31 @@ class Preview extends Component {
             ()=>{
                 if (this.state.animate){
                     this.setState({
-                        img: (this.state.img+1)%90
+                        img: (this.state.img+1)%this.props.imageCount
                     })
                 }
-            },500);
+            },this.props.speed);
     }
     render() {
+        const imgs = [];
+        for(let i = 0; i<this.props.imageCount; i++){
+            imgs.push(
+                <img
+                    key={i}
+                    src={`${path}${i}.png`}
+                    styleName={`preview__dummy-img ${this.state.img===i ? "dummy__img-active" : ""}`} alt="dummy"/>
+            )
+        }
         return <section styleName="preview-wrap" onClick={this.toggle()}>
-            <img src={`${path}${this.state.img}.png`} styleName="preview__dummy-img" alt="dummy"/>
+            {/*<img src={`${path}${this.state.img}.png`} styleName="preview__dummy-img" alt="dummy"/>*/}
+            {imgs}
         </section>
     }
 }
 
-Preview.defaultProps = {};
+Preview.defaultProps = {
+    speed: 75,
+    imageCount: 90
+};
 
 export default Preview
