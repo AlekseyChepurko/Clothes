@@ -6,12 +6,14 @@ import {
     SET_ACTIVE_ITEM,
     ADD_ITEM,
     REMOVE_ITEM,
+    TOGGLE_AFTER_ANIMATION,
     TOGGLE_ITEMS_SELECT_MENU,
     CLOSE_ITEMS_SELECT_MENU} from '../constants/ActionTypes'
 
 const initialState = {
     isOpen: true,
     activeItem: {},
+    isOpenAfterAnimation: true,
     addedItems: []
 };
 
@@ -34,7 +36,12 @@ const itemSelectMenu = (state = initialState, action)=>{
                     ...state,
                     addedItems: state.addedItems.filter((elem)=>!(elem.name === action.item.name))
                 };
-
+        case TOGGLE_AFTER_ANIMATION: {
+            return {
+                ...state,
+                isOpenAfterAnimation: state.isOpen
+            }
+        }
         default:
             return state;
     }

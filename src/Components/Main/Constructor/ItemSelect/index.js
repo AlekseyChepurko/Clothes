@@ -4,6 +4,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
+import {toggleIsOpenAfterAnimation} from 'Root/actions'
 import Mtm from './Content/Mtm'
 import Rtw from './Content/Rtw'
 import './main.css'
@@ -31,12 +32,7 @@ class ItemSelect extends Component {
         };
         this.changeActive = this.changeActive.bind(this);
     };
-    componentDidMount(){
-        // TODO add redux state animationStoped
-        ReactDOM.findDOMNode(this).addEventListener("transitionend",(e)=>{
-            e.stopPropagation();
-        });
-    }
+
     changeActive(active){
         this.setState({
             activeTab: active
@@ -67,4 +63,4 @@ class ItemSelect extends Component {
 const mapStateToProps = (state)=>({
     isOpen: state.Constructor.itemSelectMenu.isOpen,
 });
-export default connect(mapStateToProps)(ItemSelect);
+export default connect(mapStateToProps, {toggleIsOpenAfterAnimation})(ItemSelect);

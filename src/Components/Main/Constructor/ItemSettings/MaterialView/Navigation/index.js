@@ -5,7 +5,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Carousel from 'nuka-carousel'
 import {sliderDecorators} from './ControlButton'
-import {setActiveItem,addItem, removeItem} from 'Root/actions'
+import {
+    setActiveItem,
+    addItem,
+    removeItem} from 'Root/actions'
 import {items} from 'Root/constants/SelectItems'
 import {locale} from './locale'
 import './main.css'
@@ -14,7 +17,6 @@ class Navigation extends Component {
     render() {
         const {itemSelectMenuIsOpen, chosenItems, activeItem, lang} = this.props;
         const sliderParams = {
-            slideHeight: 0,
             slidesToShow: itemSelectMenuIsOpen ? 4 : 6,
         };
         return <section styleName="wrap">
@@ -40,7 +42,7 @@ Navigation.defaultProps = {
 };
 
 const mapStateToProps = (state)=>({
-    itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpen,
+    itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpenAfterAnimation,
     lang: state.language.lang,
     chosenItems: state.Constructor.itemSelectMenu.addedItems,
     activeItem: state.Constructor.itemSelectMenu.activeItem,

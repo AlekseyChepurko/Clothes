@@ -17,20 +17,12 @@ class Display extends Component {
         }
     }
 
-    // TODO get redux state itemSelectAnimationEnded
-    componentWillReceiveProps(props){
-        setTimeout(()=>{
-            this.setState({imgToShow:
-                props.itemSelectMenuIsOpen ? 3 : 4
-            })
-        },300);
-    }
     render() {
-        const {activeType=1} = this.props;
+        const {activeType=1, itemSelectMenuIsOpen} = this.props;
         const {items} = require(`Static/images/materials/type${activeType}/res`);
         const sliderSettings = {
-            slidesToShow: this.state.imgToShow,
-            slidesToScroll: this.state.imgToShow-1,
+            slidesToShow: itemSelectMenuIsOpen ? 3 : 4,
+            slidesToScroll: (itemSelectMenuIsOpen ? 3 : 4)-1,
             cellSpacing: 10,
 
         };
@@ -58,6 +50,6 @@ Display.defaultProps = {};
 
 const mapStateToProps = (state)=>({
     activeType: state.Constructor.itemSelectMenu.activeItem.type,
-    itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpen
+    itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpenAfterAnimation
 });
 export default connect(mapStateToProps)(Display)

@@ -4,9 +4,6 @@
 }
 
 .material__items-wrap{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   position: absolute;
   top: 50%;
   left: 0;
