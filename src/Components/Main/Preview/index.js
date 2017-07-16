@@ -15,7 +15,14 @@ class Preview extends Component {
             animate: true
         };
         this.toggle=()=>()=>{
-            this.setState({animate: !this.state.animate})
+            this.setState({animate: !this.state.animate});
+            this.state.animate ? clearInterval(this.animateInterval) : this.animateInterval = setInterval(
+                ()=>{
+                    this.setState({
+                        img: (this.state.img+1)%this.props.imageCount
+                    })
+
+                },this.props.speed);
         };
     }
 
@@ -23,11 +30,10 @@ class Preview extends Component {
     componentDidMount(){
         this.animateInterval = setInterval(
             ()=>{
-                if (this.state.animate){
                     this.setState({
                         img: (this.state.img+1)%this.props.imageCount
                     })
-                }
+
             },this.props.speed);
     }
     render() {
@@ -40,7 +46,9 @@ class Preview extends Component {
                     styleName={`preview__dummy-img ${this.state.img===i ? "dummy__img-active" : ""}`} alt="dummy"/>
             )
         }
-        return <section styleName="preview-wrap" onClick={this.toggle()}>
+        return <section
+            styleName="preview-wrap"
+            onClick={this.toggle()}>
             {/*<img src={`${path}${this.state.img}.png`} styleName="preview__dummy-img" alt="dummy"/>*/}
             {imgs}
         </section>
