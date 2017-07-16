@@ -8,6 +8,12 @@
 
 .preview__dummy-img{
   display: block;
+  position: absolute;
+  opacity: 0;
   margin: auto;
   height: 80vh;
+}
+
+.dummy__img-active{
+  opacity: 1;
 }
