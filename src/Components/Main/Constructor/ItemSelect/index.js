@@ -32,6 +32,15 @@ class ItemSelect extends Component {
         };
         this.changeActive = this.changeActive.bind(this);
     };
+    componentDidMount(){
+        // TODO replace to the select menu component
+        ReactDOM.findDOMNode(this).addEventListener("transitionend",(e)=>{
+            e.stopImmediatePropagation();
+            if (e.target.parentNode === ReactDOM.findDOMNode(this)){
+                this.props.toggleIsOpenAfterAnimation();
+            }
+        });
+    }
 
     changeActive(active){
         this.setState({

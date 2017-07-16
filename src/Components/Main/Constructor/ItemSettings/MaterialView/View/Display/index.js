@@ -18,12 +18,16 @@ class Display extends Component {
     }
 
     render() {
-        const {activeType=1, itemSelectMenuIsOpen} = this.props;
+        const {activeType=1, itemSelectMenuIsOpen, sideMenuIsOpen} = this.props;
         const {items} = require(`Static/images/materials/type${activeType}/res`);
+        let toShow = itemSelectMenuIsOpen ? 3 : 4;
+        if(sideMenuIsOpen){
+            toShow = 3;
+        }
         const sliderSettings = {
-            slidesToShow: itemSelectMenuIsOpen ? 3 : 4,
-            slidesToScroll: (itemSelectMenuIsOpen ? 3 : 4)-1,
-            cellSpacing: 10,
+            slidesToShow: toShow,
+            slidesToScroll: toShow-1,
+            cellSpacing: 20,
 
         };
         // TODO refactor this shiiiiiit
@@ -50,6 +54,7 @@ Display.defaultProps = {};
 
 const mapStateToProps = (state)=>({
     activeType: state.Constructor.itemSelectMenu.activeItem.type,
+    sideMenuIsOpen: state.sideMenu.isOpenAfterAnimation,
     itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpenAfterAnimation
 });
 export default connect(mapStateToProps)(Display)

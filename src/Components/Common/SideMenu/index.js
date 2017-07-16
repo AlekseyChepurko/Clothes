@@ -3,17 +3,28 @@
  */
 
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
+import {toggleIsOpenAfterAnimation} from 'Root/actions'
 import './main.css'
 import Navigation from "./Navigation";
 import SearchBar from './SearchBar'
 import Content from './Content'
 
 class SideMenu extends Component {
+    componentDidMount(){
+        // TODO replace to the select menu component
+        ReactDOM.findDOMNode(this).addEventListener("transitionend",(e)=>{
+            e.stopImmediatePropagation();
+            if (e.target === ReactDOM.findDOMNode(this)){
+                this.props.toggleIsOpenAfterAnimation();
+            }
+        });
+    }
     render(){
         const {isOpen} = this.props;
 
-        return <section
+        return <section ref="a"
             styleName={`common ${isOpen ? 'open' : ''}`}
             className='noWidth'>
             <div styleName="menu-wrap">
@@ -26,4 +37,4 @@ class SideMenu extends Component {
 }
 const mapStateToProps = (state)=>({isOpen: state.sideMenu.isOpen});
 
-export default connect(mapStateToProps)(SideMenu)
+export default connect(mapStateToProps, {toggleIsOpenAfterAnimation})(SideMenu)

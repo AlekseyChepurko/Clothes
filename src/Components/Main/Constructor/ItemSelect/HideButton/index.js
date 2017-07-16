@@ -12,13 +12,13 @@ import './main.css'
 
 class HideButton extends Component {
 
-    componentDidMount(){
-        // TODO replace to the select menu component
-        ReactDOM.findDOMNode(this).addEventListener("transitionend",(e)=>{
-            e.stopPropagation();
-            this.props.toggleIsOpenAfterAnimation();
-        });
-    }
+    // componentDidMount(){
+    //     // TODO replace to the select menu component
+    //     ReactDOM.findDOMNode(this).addEventListener("transitionend",(e)=>{
+    //         e.stopPropagation();
+    //         this.props.toggleIsOpenAfterAnimation();
+    //     });
+    // }
 
     render() {
         return <button
