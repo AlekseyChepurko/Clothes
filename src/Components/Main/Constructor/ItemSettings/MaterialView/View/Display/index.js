@@ -13,7 +13,7 @@ class Display extends Component {
     constructor(){
         super();
         this.state = {
-            imgToShow: 4
+            imgToShow: 3
         }
     }
 
@@ -21,7 +21,7 @@ class Display extends Component {
     componentWillReceiveProps(props){
         setTimeout(()=>{
             this.setState({imgToShow:
-                props.itemSelectMenuIsOpen ? 4: 6
+                props.itemSelectMenuIsOpen ? 3 : 4
             })
         },300);
     }
@@ -30,8 +30,8 @@ class Display extends Component {
         const {items} = require(`Static/images/materials/type${activeType}/res`);
         const sliderSettings = {
             slidesToShow: this.state.imgToShow,
-            slidesToScroll: 1,
-            cellSpacing: 0,
+            slidesToScroll: this.state.imgToShow-1,
+            cellSpacing: 10,
 
         };
         // TODO refactor this shiiiiiit
