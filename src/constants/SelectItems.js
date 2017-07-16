@@ -9,6 +9,6 @@ export const items = [
     {name:'shirt', type: 2},
     {name:'trousers', type: 1},
     {name:'coat', type: 1},
-    {name:'vest', type: 1},
-    {name:'tie', type: 2},
+    {name:'waistcoat', type: 1},
+    {name:'accessories', type: 2},
 ];
