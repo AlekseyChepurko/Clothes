@@ -83,7 +83,6 @@
 }
 .mtm__item-active{
   border-color: #8f7449;
-  box-shadow: inset 0 0 10px rgba(143,116,73,0.8);
 }
 
 .jacket {}
