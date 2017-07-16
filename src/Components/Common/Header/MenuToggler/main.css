@@ -1,9 +1,9 @@
 .common{
   position: absolute;
   z-index: 999;
-  left: 40px;
+  left: 2vw;
   top: 3.3vh;
-  padding: 10px 8px;
+  padding: 1vh 8px;
   transition: left .1s;
   &:hover{
     cursor: pointer;
