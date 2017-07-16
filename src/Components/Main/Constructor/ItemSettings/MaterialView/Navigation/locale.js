@@ -9,15 +9,15 @@ export const locale = {
         shirt: 'shirt',
         trousers: 'trousers',
         coat: 'coat',
-        vest: 'vest',
-        tie: 'tie'
+        waistcoat: 'waistcoat',
+        accessories: 'accessories'
     },
     ru: {
         jacket: 'пиджак',
         shirt: 'рубашка',
         trousers: 'брюки',
         coat: 'пальто',
-        vest: 'жилет',
-        tie: 'галстук'
+        waistcoat: 'жилет',
+        accessories: 'аксессуары'
     }
 };
