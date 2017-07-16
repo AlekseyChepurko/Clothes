@@ -64,7 +64,8 @@ class Item extends Component {
             onClick,
             addItem,
             removeItem} = this.props;
-        const path = require(`./items/${item.name}.png`);
+        const image = require(`./items/${item.name}.png`),
+            activeImage = require(`./items/${item.name}_picked.png`);
         return <li
             styleName={`mtm__item-wrap ${this.state.hovered ? "hovered" : ""} ${isActive ? "mtm__item-active" : ""}` }
             onClick={()=>{onClick(item)}}
@@ -76,7 +77,7 @@ class Item extends Component {
                 className={`noOpacity`}
                 styleName={`hiding top`}>{locale[lang].show}</button>
 
-            <img src={path} styleName={`${item.name} item`}/>
+            <img src={isActive ? activeImage : image} styleName={`${item.name} item`}/>
 
             <AddAndRemoveButton
                 className={`noOpacity`}
