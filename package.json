@@ -53,8 +53,10 @@
   "dependencies": {
     "babel-plugin-react-css-modules": "^3.0.1",
     "lodash": "^4.17.4",
+    "nuka-carousel": "^2.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-lazy-load": "^3.0.12",
     "react-redux": "^5.0.5",
     "redux": "^3.7.1"
   }
