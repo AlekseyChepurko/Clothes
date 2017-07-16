@@ -2,6 +2,7 @@
  * Created by Алексей on 08.07.2017.
  */
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import Mtm from './Content/Mtm'
 import Rtw from './Content/Rtw'
@@ -30,6 +31,12 @@ class ItemSelect extends Component {
         };
         this.changeActive = this.changeActive.bind(this);
     };
+    componentDidMount(){
+        // TODO add redux state animationStoped
+        ReactDOM.findDOMNode(this).addEventListener("transitionend",(e)=>{
+            e.stopPropagation();
+        });
+    }
     changeActive(active){
         this.setState({
             activeTab: active
