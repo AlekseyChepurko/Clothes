@@ -4,8 +4,6 @@
 
 import {
     SET_ACTIVE_ITEM,
-    ADD_ITEM,
-    REMOVE_ITEM,
     TOGGLE_AFTER_ANIMATION,
     TOGGLE_ITEMS_SELECT_MENU,
     CLOSE_ITEMS_SELECT_MENU} from '../constants/ActionTypes'
@@ -14,7 +12,6 @@ const initialState = {
     isOpen: true,
     activeItem: {},
     isOpenAfterAnimation: true,
-    addedItems: []
 };
 
 const itemSelectMenu = (state = initialState, action)=>{
@@ -27,16 +24,7 @@ const itemSelectMenu = (state = initialState, action)=>{
             isOpen: false};
         case SET_ACTIVE_ITEM: return {
             ...state,
-            addedItems: addItem(state.addedItems, action.item),
             activeItem: action.item};
-        case ADD_ITEM: return {
-            ...state,
-            addedItems: addItem(state.addedItems, action.item)
-        };
-        case REMOVE_ITEM: return {
-                    ...state,
-                    addedItems: state.addedItems.filter((elem)=>!(elem.name === action.item.name))
-                };
         case TOGGLE_AFTER_ANIMATION: {
             return {
                 ...state,
@@ -49,9 +37,9 @@ const itemSelectMenu = (state = initialState, action)=>{
 };
 
 const addItem = (items, item)=>{
-    if (items.find((elem)=>elem.name === item.name))
-    {return items;} else
-    {return [...items, item];}
+    return items.find((elem)=>elem.name === item.name)
+        ? items
+        : [...items, item]
 };
 
 export default itemSelectMenu
