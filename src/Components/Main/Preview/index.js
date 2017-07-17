@@ -42,7 +42,6 @@ class Preview extends Component {
             },this.props.speed);
     }
     render() {
-        console.log("asd");
         const imgs = [];
         for(let i = 0; i<this.props.imageCount; i++){
             imgs.push(
