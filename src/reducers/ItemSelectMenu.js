@@ -27,6 +27,7 @@ const itemSelectMenu = (state = initialState, action)=>{
             isOpen: false};
         case SET_ACTIVE_ITEM: return {
             ...state,
+            addedItems: addItem(state.addedItems, action.item),
             activeItem: action.item};
         case ADD_ITEM: return {
             ...state,
