@@ -4,7 +4,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
-import {toggleIsOpenAfterAnimation} from 'Root/actions'
+import {actions} from 'Root/actions'
 import Mtm from './Content/Mtm'
 import Rtw from './Content/Rtw'
 import './main.css'
@@ -72,4 +72,5 @@ class ItemSelect extends Component {
 const mapStateToProps = (state)=>({
     isOpen: state.Constructor.itemSelectMenu.isOpen,
 });
-export default connect(mapStateToProps, {toggleIsOpenAfterAnimation})(ItemSelect);
+
+export default connect(mapStateToProps, {...actions})(ItemSelect);

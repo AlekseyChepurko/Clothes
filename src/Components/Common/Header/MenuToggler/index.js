@@ -3,7 +3,8 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {openSideMenu, closeSideMenu, closeItemsSelectMenu} from 'Root/actions'
+import {actions} from 'Root/actions'
+const {openSideMenu, closeSideMenu, closeItemsSelectMenu} = actions;
 import './main.css'
 
 class MenuToggler extends Component {

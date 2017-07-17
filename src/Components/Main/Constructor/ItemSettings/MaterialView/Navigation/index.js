@@ -5,10 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Carousel from 'nuka-carousel'
 import {sliderDecorators} from './ControlButton'
-import {
-    setActiveItem,
-    addItem,
-    removeItem} from 'Root/actions'
+import {actions} from 'Root/actions'
 import {items} from 'Root/constants/SelectItems'
 import {locale} from './locale'
 import './main.css'
@@ -47,4 +44,4 @@ const mapStateToProps = (state)=>({
     chosenItems: state.order,
     activeItem: state.Constructor.itemSelectMenu.activeItem,
 });
-export default connect(mapStateToProps, {setActiveItem})(Navigation)
+export default connect(mapStateToProps, {...actions})(Navigation)

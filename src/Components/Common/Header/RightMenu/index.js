@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {changeLanguage} from 'Root/actions'
+import {actions} from 'Root/actions'
 import {languages} from 'Root/constants/languages'
 import {locale} from './locale'
 import './main.css'
@@ -66,4 +66,4 @@ RightMenu.defaultProps = {
 const mapStateToProps = (state)=>({lang: state.language.lang});
 //TODO wtf? Y cant i mapDispatchToProps ???
 // connect(()=>{},{changeLanguage})(LanguageList);
-export default connect(mapStateToProps, {changeLanguage})(RightMenu)
+export default connect(mapStateToProps, {...actions})(RightMenu)

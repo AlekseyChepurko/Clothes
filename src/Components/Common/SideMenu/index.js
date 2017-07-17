@@ -5,7 +5,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
-import {toggleIsOpenAfterAnimation} from 'Root/actions'
+import {actions} from 'Root/actions'
 import './main.css'
 import Navigation from "./Navigation";
 import SearchBar from './SearchBar'
@@ -37,4 +37,4 @@ class SideMenu extends Component {
 }
 const mapStateToProps = (state)=>({isOpen: state.sideMenu.isOpen});
 
-export default connect(mapStateToProps, {toggleIsOpenAfterAnimation})(SideMenu)
+export default connect(mapStateToProps, {...actions})(SideMenu)

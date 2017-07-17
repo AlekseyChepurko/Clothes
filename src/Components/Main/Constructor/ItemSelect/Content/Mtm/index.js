@@ -8,7 +8,7 @@ import _ from 'lodash'
 import Isvg from 'react-inlinesvg'
 import {items} from 'Root/constants/SelectItems'
 import {locale} from './locale'
-import {setActiveItem,addItem, removeItem} from 'Root/actions'
+import {actions} from 'Root/actions'
 import './main.css'
 
 // TODO admin connection add
@@ -104,4 +104,4 @@ const mapStateToProps = (state)=>({
     activeItem: state.Constructor.itemSelectMenu.activeItem,
     chosenItems: state.order
 });
-export default connect(mapStateToProps, {setActiveItem, addItem, removeItem})(Mtm);
+export default connect(mapStateToProps, {...actions})(Mtm);

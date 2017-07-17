@@ -36,10 +36,4 @@ const itemSelectMenu = (state = initialState, action)=>{
     }
 };
 
-const addItem = (items, item)=>{
-    return items.find((elem)=>elem.name === item.name)
-        ? items
-        : [...items, item]
-};
-
 export default itemSelectMenu
