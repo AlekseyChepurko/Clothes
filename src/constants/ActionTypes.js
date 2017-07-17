@@ -15,6 +15,10 @@ export const CLOSE_ITEMS_SELECT_MENU = 'CLOSE_ITEMS_SELECT_MENU';
 
 // Item select
 export const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
+export const TOGGLE_AFTER_ANIMATION= 'TOGGLE_AFTER_ANIMATION';
+
+
+// Order
 export const ADD_ITEM = 'ADD_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
-export const TOGGLE_AFTER_ANIMATION= 'TOGGLE_AFTER_ANIMATION';
+export const SET_ORDER = 'SET_ORDER';

@@ -4,7 +4,8 @@
 import {
     ADD_ITEM,
     REMOVE_ITEM,
-    SET_ACTIVE_ITEM
+    SET_ACTIVE_ITEM,
+    SET_ORDER
     } from '../constants/ActionTypes'
 
 const initialState =  [];
@@ -16,6 +17,8 @@ const itemSelectMenu = (state = initialState, action)=>{
         case REMOVE_ITEM: return state.filter((elem)=>!(elem.name === action.item.name));
 
         case SET_ACTIVE_ITEM: return addItem(state, action.item);
+
+        case SET_ORDER: return action.order;
         default:
             return state;
     }

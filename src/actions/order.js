@@ -13,3 +13,8 @@ export const removeItem = (item) => ({
     type: actions.REMOVE_ITEM,
     item
 });
+
+export const setOrder=(order) => ({
+    type: actions.SET_ORDER,
+    order
+});
