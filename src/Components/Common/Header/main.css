@@ -6,7 +6,7 @@
     padding: 0 125px;
     text-transform: uppercase;
     max-height: 100px;
-    min-height: 10vh;
+    height: 10vh;
     @media (width < 1200px) {
         padding: 0 40px;
     }
@@ -23,6 +23,7 @@
 }
 
 .order-first{
+    height: 90%;
     @media (width < 640px) {
         order: 1;
         justify-content: center;
@@ -37,8 +38,9 @@
     flex-direction: column;
     align-items: center;
     img{
-        max-height: 22px;
-        max-width: 22px;
+        height: 100%;
+        //max-height: 22px;
+        //max-width: 22px;
     }
 }
 

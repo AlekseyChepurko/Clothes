@@ -11,8 +11,6 @@ import './main.css'
 
 const Logo = ()=> <div styleName="logo__block_wrap order-first">
     <img src={logoImg} alt="Логотип"/>
-    <p styleName="bold">logo</p>
-    <p styleName="little">logo</p>
 </div>;
 
 class Header extends Component {
