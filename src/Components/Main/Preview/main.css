@@ -1,11 +1,10 @@
 .preview-wrap{
-  //display: flex;
   position: relative;
+  overflow: hidden;
   min-width: 300px;
   width: 35%;
   cursor: pointer;
 }
-
 .preview__dummy-img{
   display: block;
   position: absolute;
@@ -14,6 +13,11 @@
   opacity: 0;
   margin: auto;
   height: 80vh;
+
+  &:first-child{
+    position: relative;
+    float: left;
+  }
 }
 
 .dummy__img-active{
