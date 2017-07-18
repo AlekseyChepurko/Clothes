@@ -7,11 +7,14 @@ import './main.css'
 
 const path='/static/images/views/0/1/';
 
+
+const getNextImageNumber = (currentNumber, imageCount)=>1 + (currentNumber)%imageCount;
+
 class Preview extends Component {
     constructor(props){
         super(props);
         this.state = {
-            img: 0,
+            img: 1,
             animate: true
         };
         this.startAnimation=()=>()=>{
@@ -19,7 +22,7 @@ class Preview extends Component {
             this.animateInterval = setInterval(
                 ()=>{
                     this.setState({
-                        img: (this.state.img+1)%this.props.imageCount
+                        img: getNextImageNumber(this.state.img, this.props.imageCount)
                     })
 
                 },this.props.speed);
@@ -36,14 +39,14 @@ class Preview extends Component {
         this.animateInterval = setInterval(
             ()=>{
                     this.setState({
-                        img: (this.state.img+1)%this.props.imageCount
+                        img: getNextImageNumber(this.state.img, this.props.imageCount)
                     })
 
             },this.props.speed);
     }
     render() {
         const imgs = [];
-        for(let i = 0; i<this.props.imageCount; i++){
+        for(let i = 1; i<this.props.imageCount+1; i++){
             imgs.push(
                 <img
                     key={i}
@@ -63,7 +66,7 @@ class Preview extends Component {
 
 Preview.defaultProps = {
     speed: 75,
-    imageCount: 90
+    imageCount: 89
 };
 
 export default Preview
