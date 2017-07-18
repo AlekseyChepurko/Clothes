@@ -12,7 +12,7 @@ import './main.css'
 class Constructor extends Component {
     componentWillMount(){
         fetch(items).then(res=>res.json()).then((res)=>{
-            this.props.setOrder(res);
+            // this.props.setOrder(res);
         })
     }
     render(){
