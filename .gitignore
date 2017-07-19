@@ -3,3 +3,4 @@ node_modules/
 build/
 npm-debug.log
 key.ppk
+/static/images/logos/res.json
