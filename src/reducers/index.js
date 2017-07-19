@@ -7,11 +7,12 @@ import sideMenu from './SideMenu'
 import language from './Language'
 import Constructor from './Constructor'
 import order from './order'
-// import itemSelectMenu from './itemSelectMenu'
+import orderStructure from './orderStructure'
 
 export default combineReducers({
     sideMenu,
     language,
     Constructor,
-    order
+    order,
+    orderStructure
 })
