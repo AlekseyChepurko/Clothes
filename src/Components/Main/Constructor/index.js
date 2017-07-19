@@ -7,12 +7,14 @@ import {connect} from 'react-redux'
 import {actions} from 'Root/actions'
 import ItemSelect from './ItemSelect'
 import ItemSettings from './ItemSettings'
-import items from 'Root/constants/items.json'
+// import items from 'Root/constants/items.json'
+import items from 'Static/images/logos/res.json'
 import './main.css'
+
 class Constructor extends Component {
     componentWillMount(){
         fetch(items).then(res=>res.json()).then((res)=>{
-            // this.props.setOrder(res);
+            this.props.initOrderStructure(res);
         })
     }
     render(){
