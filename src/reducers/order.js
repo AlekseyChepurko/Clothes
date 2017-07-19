@@ -10,7 +10,7 @@ import {
 
 const initialState =  [];
 
-const itemSelectMenu = (state = initialState, action)=>{
+const order = (state = initialState, action)=>{
     switch (action.type){
         case ADD_ITEM: return addItem(state, action.item);
 
@@ -29,4 +29,4 @@ const addItem = (items, item)=>{
         ? items
         : [...items, item]
 };
-export default itemSelectMenu
+export default order
