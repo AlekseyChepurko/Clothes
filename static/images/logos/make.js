@@ -16,9 +16,6 @@ function getFiles(srcpath) {
 
 function makeObjectByFolderFullName(folderFullName, name){
 
-    if (name === 'material'){
-        return null;
-    }
     const subFolders = getDirectories(folderFullName),
             files = getFiles(folderFullName),
             parameters = [],
@@ -41,21 +38,16 @@ function makeObjectByFolderFullName(folderFullName, name){
         parameters.length > 0 ? {parameters} : null,
         subChoice.length > 0 ? {subChoice} : null
     );
-    if (parameters.length > 0){
-        return {
-            name: name,
-            parameters: parameters,
-            subChoice: subChoice
-        }
-    } else {
-        return {
-            name: name,
-            subChoice: subChoice
-        }
-    }
 }
 
-fs.writeFile(path.resolve(__dirname, "res.json"), JSON.stringify(makeObjectByFolderFullName(path.resolve(__dirname), 'main')) , function(err) {
+const items = [];
+
+getDirectories(path.resolve(__dirname))
+    .forEach(dir => items.push(
+        makeObjectByFolderFullName(path.resolve(__dirname, dir), dir)
+));
+
+fs.writeFile(path.resolve(__dirname, "res.json"), JSON.stringify(items) , function(err) {
     if(err) {
         return console.log(err);
     }
