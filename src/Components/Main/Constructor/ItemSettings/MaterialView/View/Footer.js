@@ -22,7 +22,7 @@ class Footer extends Component {
 }
 
 Footer.defaultProps = {
-    path: [{name: "model", active:true}, {name: "model"}, {name: "front pockets"}]
+    path: [{name: "material", active:true}, {name: "look"}, {name: "front pockets"}]
 };
 
 export default Footer
