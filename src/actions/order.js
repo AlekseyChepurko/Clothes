@@ -18,3 +18,8 @@ export const setOrder=(order) => ({
     type: actions.SET_ORDER,
     order
 });
+
+export const initOrderStructure = structure => ({
+    type: actions.INIT_ORDER_STRUCTURE,
+    structure
+});
