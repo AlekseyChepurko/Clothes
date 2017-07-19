@@ -10,10 +10,6 @@ import './main.css'
 
 import struct from 'Static/images/logos/res.json'
 
-fetch(struct).then((r)=>{
-    return r.json()}).then(r=> {
-    console.log(r);});
-
 class Main extends Component {
     render(){
         return(
