@@ -8,6 +8,7 @@ const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin");
 const WebpackChunkHash = require("webpack-chunk-hash");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractSass = new ExtractTextPlugin({
     filename: "css/[name].[contenthash].css"
@@ -21,7 +22,8 @@ const pages = [
 const paths = {
     styles: './src/styles/',
     scripts: './src/',
-    images: './src/img/'
+    images: './src/img/',
+    static: path.resolve(__dirname, './static')
 };
 
 const plugins = [
@@ -43,6 +45,7 @@ const plugins = [
         manifestVariable: "webpackManifest",
         inlineManifest: true
     }),
+    new CopyWebpackPlugin([{from: paths.static, to: 'static'}],{copyUnmodified: true}),
     new webpack.HotModuleReplacementPlugin(),
     new BundleAnalyzerPlugin({openAnalyzer: true}),
     new HtmlWebpackPlugin({
