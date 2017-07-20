@@ -17,7 +17,6 @@ class Item  extends Component{
             style={{color: name===active ? "#8f7548": null}}
             styleName={`constructor__choice`}
             onClick={()=>{
-                console.log(name);
                 onClick(name)}
             }
         >{name}</button>

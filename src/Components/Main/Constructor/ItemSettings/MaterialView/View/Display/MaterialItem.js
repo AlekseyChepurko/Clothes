@@ -4,9 +4,6 @@
 import React, {Component} from 'react'
 import './main.css'
 
-// const pathToImgs = require.context('Static/images/materials/type1/', true);
-// console.log(require.context);
-
 class MaterialItem extends Component {
     render() {
         const {path, type, itemName} = this.props;

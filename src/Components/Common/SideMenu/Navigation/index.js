@@ -18,8 +18,7 @@ class Navigation extends Component {
             {items.map((item,index)=>{
                 const img = require(`./images/${item}.png`);
                 return <a
-                    onClick={(e)=>{
-                        console.log(item)}}
+                    onClick={(e)=>{}}
                     styleName="navigation__link-item"
                     key={index}>
                     <img
