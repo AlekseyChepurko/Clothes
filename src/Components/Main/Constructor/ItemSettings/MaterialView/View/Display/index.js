@@ -53,7 +53,7 @@ class Display extends Component {
 Display.defaultProps = {};
 
 const mapStateToProps = (state)=>({
-    activeType: state.Constructor.itemSelectMenu.activeItem.type,
+    activeType: state.Constructor.activeItem.type,
     sideMenuIsOpen: state.sideMenu.isOpenAfterAnimation,
     itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpenAfterAnimation
 });
