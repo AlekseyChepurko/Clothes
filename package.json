@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "babel-plugin-react-css-modules": "^3.0.1",
+    "expect": "^1.20.2",
     "lodash": "^4.17.4",
     "nuka-carousel": "^2.0.4",
     "react": "^15.5.4",
