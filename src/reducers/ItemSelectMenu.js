@@ -22,9 +22,6 @@ const itemSelectMenu = (state = initialState, action)=>{
         case CLOSE_ITEMS_SELECT_MENU: return {
             ...state,
             isOpen: false};
-        case SET_ACTIVE_ITEM: return {
-            ...state,
-            activeItem: action.item};
         case TOGGLE_AFTER_ANIMATION: {
             return {
                 ...state,

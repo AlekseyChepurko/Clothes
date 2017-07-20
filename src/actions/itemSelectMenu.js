@@ -20,3 +20,8 @@ export const setActiveItem = (item) => ({
     type: actions.SET_ACTIVE_ITEM,
     item
 });
+
+export const setActiveItemParameter=(param) =>({
+    type: actions.SET_ACTIVE_ITEM_PARAMETER,
+    param
+});
