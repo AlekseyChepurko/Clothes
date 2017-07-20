@@ -5,28 +5,36 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import expect from 'expect'
 import _ from 'lodash'
-import FooterPathItem from './FooterPathItem'
 import items from 'Static/images/logos/res.json'
 import {displayOrder} from 'Root/constants/ItemOptionsDisplayOrder'
 import '../main.css'
 
 class Footer extends Component {
+
     render() {
         const {activeItem, structure} = this.props;
+        const {pathesToShow} = this;
+        if (!pathesToShow || pathesToShow.length===0) {
+            this.pathesToShow = structure.map( e =>({
+                    name: e.name,
+                    parameters: getPathByStructureObject(e),
+                })
+            )
+        }
+        const index = _.findIndex(pathesToShow, e => e.name === activeItem.name),
+              parameters = this.pathesToShow.length>0 ? this.pathesToShow[index > -1 ? index : 0].parameters : [];
 
-        const pathToShow = _.find(structure, item => item.name === activeItem.name) ? _.find(structure, item => item.name === activeItem.name) : [];
         return <ul styleName="footer__wrap">
-            <FooterPathItem {...pathToShow}/>
-             {/*{this.props.path.map((item, index)=>*/}
-                {/*<li*/}
-                    {/*style={{*/}
-                        {/*color: item.active ? "#7a7a7a" : ""*/}
-                    {/*}}*/}
-                    {/*styleName="view_path__item"*/}
-                    {/*key={index}>*/}
-                    {/*{item.name}*/}
-                {/*</li>*/}
-            {/*)}*/}
+             {parameters.map((item, index)=>
+                 <li
+                     style={{
+                         color: item.active ? "#7a7a7a" : ""
+                     }}
+                     styleName="view_path__item"
+                     key={index}>
+                     {item.name}
+                 </li>
+             )}
         </ul>
     }
 }
@@ -38,9 +46,10 @@ Footer.defaultProps = {
 
 const mapStateToProps = state => ({
     activeItem: state.Constructor.itemSelectMenu.activeItem,
-    structure: state.orderStrucrure
+    structure: state.orderStructure
 });
 export default connect(mapStateToProps, {})(Footer)
+
 
 function flattStructureObject(structureObject={}){
     return _.flatten([
