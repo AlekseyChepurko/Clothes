@@ -4,10 +4,8 @@
 
 
 export const displayOrder = [
-    'look',
-    'fason',
     'material',
-    'silhouette',
+    'look', 'fason', 'silhouette',
     'lapel', 'edges',
     'pockets', 'front_pockets', 'back_pockets'
 ];
