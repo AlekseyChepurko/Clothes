@@ -17,7 +17,7 @@ function getFiles(srcpath) {
 function makeObjectByFolderFullName(folderFullName, name){
 
     const subFolders = getDirectories(folderFullName),
-            files = getFiles(folderFullName),
+            files = getFiles(folderFullName).map(e=> path.basename(e, '.png')),
             parameters = [],
             subChoice = [];
 
