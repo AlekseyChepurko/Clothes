@@ -38,7 +38,6 @@ class Constructor extends Component {
             });
         })
     }
-    initOrder(){}
     render(){
         return <section styleName="common">
             {this.props.sideMenuIsOpen
