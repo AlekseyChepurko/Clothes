@@ -38,7 +38,7 @@ class Mtm extends Component {
                     addItem={addItem}
                     removeItem={removeItem}
                     isActive={item.name === activeItem.name}
-                    isAdded={_.intersection(chosenItems, [item]).length !== 0}
+                    isAdded={_.findIndex(chosenItems, e=>e.name===item.name ) !== -1}
                     lang={lang}
                     item={item}
                     key={index}/>
