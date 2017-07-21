@@ -3,8 +3,10 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {actions} from 'Root/actions'
 import expect from 'expect'
 import _ from 'lodash'
+import Navigation from '../../Navigation'
 import items from 'Static/images/logos/res.json'
 import {displayOrder} from 'Root/constants/ItemOptionsDisplayOrder'
 import '../main.css'
@@ -12,7 +14,7 @@ import '../main.css'
 class Footer extends Component {
 
     render() {
-        const {activeItem, structure} = this.props;
+        const {activeItem, structure, itemSelectMenuIsOpen, setActiveItemParameter} = this.props;
         const {pathesToShow} = this;
         if (!pathesToShow || pathesToShow.length===0) {
             this.pathesToShow = structure.map( e =>({
@@ -23,19 +25,13 @@ class Footer extends Component {
         }
         const index = _.findIndex(pathesToShow, e => e.name === activeItem.name),
               parameters = this.pathesToShow.length>0 ? this.pathesToShow[index > -1 ? index : 0].parameters : [];
-
-        return <ul styleName="footer__wrap">
-             {parameters.map((item, index)=>
-                 <li
-                     style={{
-                         color: item.active ? "#7a7a7a" : ""
-                     }}
-                     styleName="view_path__item"
-                     key={index}>
-                     {item.name}
-                 </li>
-             )}
-        </ul>
+        return <Navigation {...{
+            items: [{name: 'material'}, ...parameters],
+            lang: 'en',
+            activeValue: activeItem.parameter,
+            itemSelectMenuIsOpen,
+            setActiveItem: setActiveItemParameter
+        }}/>;
     }
 }
 
@@ -45,10 +41,12 @@ Footer.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-    activeItem: state.Constructor.itemSelectMenu.activeItem,
-    structure: state.orderStructure
+    activeItem: state.Constructor.activeItem,
+    structure: state.orderStructure,
+    itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpen,
+    lang: state.language.lang
 });
-export default connect(mapStateToProps, {})(Footer)
+export default connect(mapStateToProps, {...actions})(Footer)
 
 
 function flattStructureObject(structureObject={}){
