@@ -12,7 +12,7 @@ if(process.env.NODE_ENV !== 'production'){
     const {logger} = require('redux-logger');
     createStoreWithMiddleware =
         applyMiddleware(
-            logger
+            // logger
         )(createStore);
 }
 else {
