@@ -8,5 +8,6 @@ export const displayOrder = [
     'fason',
     'material',
     'silhouette',
-    'lapel', 'edges' ,'pockets'
+    'lapel', 'edges',
+    'pockets', 'front_pockets', 'back_pockets'
 ];
