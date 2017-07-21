@@ -10,6 +10,7 @@ import ItemSelect from './ItemSelect'
 import ItemSettings from './ItemSettings'
 // import items from 'Root/constants/items.json'
 import items from 'Static/images/logos/res.json'
+import parameterDependencies from 'Root/constants/parametrsDependencies.json'
 import './main.css'
 
 function getInitialItemOrder(itemStructure){
@@ -28,6 +29,7 @@ function getInitialItemOrder(itemStructure){
 
 class Constructor extends Component {
     componentWillMount(){
+        // TODO refactor forEach
         fetch(items).then(res=>res.json()).then((res)=>{
             this.props.initOrderStructure(res);
             res.forEach(e=>{
@@ -36,6 +38,9 @@ class Constructor extends Component {
                     parameters: getInitialItemOrder(e)
                 });
             });
+        });
+        fetch(parameterDependencies).then(r=>r.json()).then(r=>{
+            this.props.setParametersDependencies(r);
         })
     }
     render(){
