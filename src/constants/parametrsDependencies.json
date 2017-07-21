@@ -1,15 +1,22 @@
 [
 
   {
+    "parameterName": "look",
+    "child": "fason"
+  },
+  {
     "parameterName": "fason",
+    "child": "silhouette",
     "parent": "look"
   },
   {
     "parameterName": "silhouette",
+    "child": "lapel",
     "parent": "fason"
   },
   {
     "parameterName": "lapel",
+    "child": "edges",
     "parent": "silhouette"
   },
   {
