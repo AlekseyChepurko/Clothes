@@ -25,3 +25,8 @@ export const setActiveItemParameter=(param) =>({
     type: actions.SET_ACTIVE_ITEM_PARAMETER,
     param
 });
+
+export const setParametersDependencies = (deps)=>({
+    type: actions.SET_PARAMETERS_DEPENDENCIES,
+    deps
+});
