@@ -19,7 +19,7 @@ class Display extends Component {
 
     render() {
         const {activeType=1, itemSelectMenuIsOpen, sideMenuIsOpen} = this.props;
-        const {items} = require(`Static/images/logos/independent/material/type${activeType}/res`);
+        const {items} = require(`Static/images/logos/material/type${activeType}/res`);
         let toShow = itemSelectMenuIsOpen ? 3 : 4;
         if(sideMenuIsOpen){
             toShow = 3;
@@ -41,7 +41,7 @@ class Display extends Component {
                                        console.log(item);
                                    }}
                                    key={key}
-                                   src={`/static/images/logos/independent/material/type${activeType}/${item}.png`}
+                                   src={`/static/images/logos/material/type${activeType}/${item}.png`}
                                    alt=""/>
                        )}
                    </Carousel>
@@ -54,6 +54,7 @@ Display.defaultProps = {};
 
 const mapStateToProps = (state)=>({
     activeType: state.Constructor.activeItem.type,
+    activeItemParameter: state.Constructor.activeItem.parameter,
     sideMenuIsOpen: state.sideMenu.isOpenAfterAnimation,
     itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpenAfterAnimation
 });
