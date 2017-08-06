@@ -6,6 +6,6 @@
 export const displayOrder = [
     'material',
     'look', 'fason', 'silhouette',
-    'lapel', 'edges',
+    'lapel', 'edges', 'furniture',
     'pockets', 'front_pockets', 'back_pockets'
 ];
