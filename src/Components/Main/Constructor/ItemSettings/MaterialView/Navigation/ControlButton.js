@@ -6,7 +6,7 @@ import prevArrow from'./images/prevArrow.png'
 import nextArrow from'./images/nextArrow.png'
 
 const imgStyle = {
-    height: "90%",
+    height: "1.5rem",
     paddingLeft: 20,
     paddingRight: 20,
     cursor: "pointer"
