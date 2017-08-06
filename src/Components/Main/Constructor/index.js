@@ -32,19 +32,21 @@ class Constructor extends Component {
         // TODO refactor forEach
         fetch(items).then(res=>res.json()).then((res)=>{
             this.props.initOrderStructure(res);
+            const a =[];
             res.forEach(e=>{
-                this.props.addItem({
+                a.push({
                     name: e.name,
                     parameters: getInitialItemOrder(e)
                 });
             });
+            this.props.setOrder(a);
         });
         fetch(parameterDependencies).then(r=>r.json()).then(r=>{
             this.props.setParametersDependencies(r);
         })
     }
     render(){
-        return <section styleName="common">
+        return <section styleName="common" style={{zIndex: 10}}>
             {this.props.sideMenuIsOpen
             ? null
             : <ItemSelect/>}
