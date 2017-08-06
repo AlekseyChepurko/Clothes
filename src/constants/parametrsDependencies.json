@@ -1,26 +1,54 @@
 [
-
-  {
+  [{
     "parameterName": "look",
     "child": "fason"
   },
-  {
-    "parameterName": "fason",
-    "child": "silhouette",
-    "parent": "look"
-  },
-  {
-    "parameterName": "silhouette",
-    "child": "lapel",
-    "parent": "fason"
-  },
-  {
-    "parameterName": "lapel",
-    "child": "edges",
-    "parent": "silhouette"
-  },
-  {
-    "parameterName": "edges",
-    "parent": "lapel"
-  }
+    {
+      "parameterName": "fason",
+      "child": "silhouette",
+      "parent": "look"
+    },
+    {
+      "parameterName": "silhouette",
+      "child": "lapel",
+      "parent": "fason"
+    },
+    {
+      "parameterName": "lapel",
+      "child": "edges",
+      "parent": "silhouette"
+    },
+    {
+      "parameterName": "edges",
+      "child": "pockets",
+      "parent": "lapel"
+    },
+    {
+      "parameterName": "pockets",
+      "parent": "edges"
+    }
+  ],
+
+  [
+    {
+      "parameterName": "look",
+      "child": "fason"
+    },
+    {
+      "parameterName": "fason",
+      "child": "silhouette",
+      "parent": "look"
+    },
+    {
+      "parameterName": "silhouette",
+      "child": "lapel",
+      "parent": "fason"
+    },
+    {
+      "parameterName": "lapel"
+    },
+    {
+      "parameterName": "edges"
+    }
+  ]
 ]
