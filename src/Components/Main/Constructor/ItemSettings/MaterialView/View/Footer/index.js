@@ -4,10 +4,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {actions} from 'Root/actions'
-import expect from 'expect'
 import _ from 'lodash'
 import Navigation from '../../Navigation'
-import items from 'Static/images/logos/res.json'
 import {displayOrder} from 'Root/constants/ItemOptionsDisplayOrder'
 import '../main.css'
 
@@ -26,7 +24,7 @@ class Footer extends Component {
         const index = _.findIndex(pathesToShow, e => e.name === activeItem.name),
               parameters = this.pathesToShow.length>0 ? this.pathesToShow[index > -1 ? index : 0].parameters : [];
         return <Navigation {...{
-            items: [{name: 'material'}, ...parameters],
+            items: [...parameters],
             lang: 'en',
             activeValue: activeItem.parameter,
             itemSelectMenuIsOpen,
@@ -71,35 +69,4 @@ function sortByOrderArray(target=[],orderArray=displayOrder){
     return target.sort( (a,b) =>
         orderArray.indexOf(a.name) >= orderArray.indexOf(b.name) ? 1 : -1
     )
-}
-if(process.env.NODE_ENV !== 'production'){
-
-    fetch(items).then(r=>r.json()).then(structureObject => {
-        expect(getPathByStructureObject(structureObject[1])).toEqual([
-            {
-                name: 'look',
-                text: ''
-            },
-            {
-                name: 'fason',
-                text: ''
-            },
-            {
-                name: 'silhouette',
-                text: ''
-            },
-            {
-                name: 'lapel',
-                text: ''
-            },
-            {
-                name: 'edges',
-                text: ''
-            },
-            {
-                name: 'pockets',
-                text: ''
-            }
-        ])
-    })
 }
