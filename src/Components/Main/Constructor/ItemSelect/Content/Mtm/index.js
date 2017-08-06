@@ -5,21 +5,25 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import _ from 'lodash'
-import Isvg from 'react-inlinesvg'
 import {items} from 'Root/constants/SelectItems'
 import {locale} from './locale'
 import {actions} from 'Root/actions'
 import './main.css'
 
-// TODO admin connection add
-// const items = [
-//     {name:'jacket', type: 1},
-//     {name:'shirt', type: 2},
-//     {name:'trousers', type: 1},
-//     {name:'coat', type: 1},
-//     {name:'vest', type: 1},
-//     {name:'tie', type: 2},
-// ];
+
+function getInitialItemOrder(itemStructure){
+    const {subChoice, parameters} = itemStructure;
+    const res = [];
+    if (parameters){
+        res.push({name: itemStructure.name, value: parameters[0]});
+    }
+    if(subChoice) {
+        subChoice.forEach((e)=>{
+            res.push(getInitialItemOrder(e));
+        })
+    }
+    return _.uniqBy(_.flattenDeep(res), e=>e.name);
+}
 
 class Mtm extends Component {
     render(){
@@ -29,6 +33,7 @@ class Mtm extends Component {
             activeItem,
             chosenItems,
             addItem,
+            orderStructure,
             removeItem} = this.props;
         return <ul styleName="common">
             {items.map((item,index) =>
@@ -40,7 +45,9 @@ class Mtm extends Component {
                     isActive={item.name === activeItem.name}
                     isAdded={_.findIndex(chosenItems, e=>e.name===item.name ) !== -1}
                     lang={lang}
-                    item={item}
+                    item={orderStructure.length===0 ? item : Object.assign({},{
+                        parameters: getInitialItemOrder(orderStructure[_.findIndex(orderStructure, e=>e.name===item.name)])
+                    }, item)}
                     key={index}/>
             })
             }
@@ -89,19 +96,21 @@ class Item extends Component {
 }
 
 class AddAndRemoveButton extends Component{
+
     render(){
         const {item, onClick} = this.props;
         return <button
             onClick={(e)=>{e.stopPropagation(); onClick(item)}}
             className={`noOpacity`}
             styleName={`hiding bottom`}>{this.props.children}</button>
-}
+    }
 }
 
 
 const mapStateToProps = (state)=>({
     lang: state.language.lang,
     activeItem: state.Constructor.activeItem,
-    chosenItems: state.order
+    chosenItems: state.order,
+    orderStructure: state.orderStructure
 });
 export default connect(mapStateToProps, {...actions})(Mtm);
