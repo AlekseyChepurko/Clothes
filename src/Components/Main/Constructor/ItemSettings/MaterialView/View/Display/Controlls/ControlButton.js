@@ -7,7 +7,9 @@ export const ControlNextSlide = React.createClass({
     render() {
         return (
             <button
-                style={{color: this.props.currentSlide === this.props.slideCount - this.props.slidesToShow ? "grey" : "white"}}
+                style={{
+                    color: 'white',
+                    display: this.props.currentSlide >= this.props.slideCount - this.props.slidesToShow ? "none" : "block"}}
                 onClick={this.props.nextSlide}>
                 {">"}
             </button>
@@ -21,7 +23,9 @@ export const ControlPrevSlide = React.createClass({
     render() {
         return (
             <button
-                style={{color: this.props.currentSlide === 0 ? "grey" : "white"}}
+                style={{
+                    color: 'white',
+                    display: this.props.currentSlide === 0 ? "none" : "block"}}
                 onClick={this.props.previousSlide}>
                 {"<"}
             </button>
