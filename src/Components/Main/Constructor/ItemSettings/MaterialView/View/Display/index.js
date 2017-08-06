@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import Carousel from 'nuka-carousel'
 import _ from 'lodash'
 import {sliderDecorators} from './Controlls/ControlButton'
+import {setActiveItemParameter} from 'Root/actions/itemSelectMenu'
 import './main.css'
 
 
@@ -13,13 +14,21 @@ class Display extends Component {
     constructor(){
         super();
         this.state = {
-            imgToShow: 3
+            imgToShow: 3,
+            slideIndex: 0
         }
+    }
+    // TODO refactor timeout
+    componentWillReceiveProps(){
+        this.setState({slideIndex: 1});
+        setTimeout(()=>{
+            this.setState({slideIndex: 0})
+        },0);
     }
 
     render() {
+
         const {
-            activeType=1,
             deps,
             order,
             orderStructure,
@@ -27,7 +36,7 @@ class Display extends Component {
             activeItemName,
             itemSelectMenuIsOpen,
             sideMenuIsOpen} = this.props;
-        const {items} = {};
+
         let toShow = itemSelectMenuIsOpen ? 3 : 4;
         if(sideMenuIsOpen){
             toShow = 3;
@@ -36,31 +45,33 @@ class Display extends Component {
             slidesToShow: toShow,
             slidesToScroll: toShow-1,
             cellSpacing: 20,
-
+            style: {
+                height: "100%",
+            }
         };
-        console.log(getItemsToShow({
-            itemName: 'coat',
-            parameter: 'fason',
-            structure: orderStructure,
+        const parameterDeps = getItemsDependencies(activeItemParameter, deps);
+        const path = getActiveItemsPath({
+            itemName: activeItemName,
             order: order,
-            parameterDeps: deps,
-        }));
-        const path = '';
+            parameterDeps: parameterDeps,
+        });
+        const items = getItemsToShow({
+            parameter: activeItemParameter,
+            itemStructure: orderStructure[_.findIndex(orderStructure, o=>o.name===activeItemName)],
+            path
+        }) || [];
         // TODO refactor this shiiiiiit
         // TODO delete carousel. its a kind of... blah.
         return <scetion styleName="assHole">
                <section styleName="material__items-wrap">
-                   <Carousel {...sliderSettings} decorators={sliderDecorators}>
-                       <li></li>
-                       {/*{items.map((item, key)=>*/}
-                               {/*<img*/}
-                                   {/*onClick={()=>{*/}
-                                       {/*console.log(item);*/}
-                                   {/*}}*/}
-                                   {/*key={key}*/}
-                                   {/*src={`/static/images/logos/${activeItemParameter}/type${activeType}/${item}.png`}*/}
-                                   {/*alt=""/>*/}
-                       {/*)}*/}
+                   <Carousel {...sliderSettings} slideIndex={this.state.slideIndex} decorators={sliderDecorators}>
+                       {items.map((item, key)=>
+                               <img
+                                   // onClick={}
+                                   key={key}
+                                   src={`/static/images/logos/${activeItemName}/${path.join('/')}/${item}.png`}
+                                   alt=""/>
+                       )}
                    </Carousel>
                </section>
         </scetion>
@@ -70,7 +81,7 @@ class Display extends Component {
 Display.defaultProps = {};
 
 const mapStateToProps = (state)=>({
-    deps: state.parametersDependencies,
+    deps: state.parametersDependencies[1],
     order: state.order,
     orderStructure: state.orderStructure,
     activeType: state.Constructor.activeItem.type,
@@ -79,58 +90,43 @@ const mapStateToProps = (state)=>({
     sideMenuIsOpen: state.sideMenu.isOpenAfterAnimation,
     itemSelectMenuIsOpen: state.Constructor.itemSelectMenu.isOpenAfterAnimation
 });
-export default connect(mapStateToProps)(Display)
+export default connect(mapStateToProps, {setActiveItemParameter})(Display)
 
 function getItemsToShow(params) {
-    const {itemName, parameter, parameterDeps, structure, order} = params;
+    const {itemStructure, path} = params;
+    if(!itemStructure) return [];
+    if (path.length > 0)
+        return getItemsToShow({
+            itemStructure: itemStructure.subChoice[_.findIndex(itemStructure.subChoice, n=>n.name===path[0])],
+            path: _.drop(path),
+        });
+    return itemStructure.parameters
 
-    // console.log('next', getNextParameter(parameter, parameterDeps));
+}
 
-    if (structure.length === 0) return;
+function getActiveItemsPath(params){
+    const {order,parameterDeps, itemName} = params;
+    const orderIndex = _.findIndex(order, o=>o.name===itemName);
+    if(order.length === 0 ||  orderIndex===-1 ) return [];
 
-    const itemIndex = _.findIndex(structure, e => e.name === itemName),
-        item = structure[itemIndex],
-        parameterIndex = _.findIndex(item.subChoice, e => e.name === parameter);
+    const path = [];
+    const activeItemOrder = order[orderIndex].parameters;
 
-    if (parameterIndex !== -1) {
-        return item.subChoice[parameterIndex].parameters;
-    }
-    console.log(structure[itemIndex]);
-
-    // if (structure[itemIndex].subChoice) {
-    //     return getItemsToShow({
-    //         ...params,
-    //         structure: structure[itemIndex].subChoice[_.findIndex(structure[itemIndex].subChoice)]
-    //     })}
-    // console.log('next', getNextParameter(parameter, parameterDeps));
-    // console.log('deps', getItemsDependencies(parameter, parameterDeps));
-    // // const nextItemName =
-
-    // return getItemsToShow({
-    //     ...params,
-    //     structure: structure[_.findIndex()]
-    // });
+    parameterDeps.forEach(parameter => {
+        path.push(parameter);
+        const i = _.findIndex(activeItemOrder, o=>o.name===parameter);
+        if(i > -1)
+            path.push(activeItemOrder[i].value)
+    });
+    return _.dropRight(path);
 }
 
 function getItemsDependencies(parameter, parametersDependencies) {
     const index = _.findIndex(parametersDependencies, e => e.parameterName === parameter);
     const res = [];
-    res.unshift(parameter);
-    if (index !== -1) {
-        res.push(getItemsDependencies(parametersDependencies[index].child, parametersDependencies))
-    }
+    if(parameter)
+        res.unshift(parameter);
+    if (index !== -1)
+        res.unshift(getItemsDependencies(parametersDependencies[index].parent, parametersDependencies));
     return _.flatten(res);
 }
-
-function getNextParameter(parameter,parametersDependencies){
-    if(parametersDependencies instanceof Array && parametersDependencies.length !==0){
-        return parametersDependencies[
-            _.findIndex(parametersDependencies, e=>e.parameterName===parameter)
-            ].child;
-    }
-}
-
-// fetch(deps).then(r=>r.json()).then(r => {
-//     // console.log(getItemsDependencies('silhouette', r));
-//     console.log(getItemsToShow(r, 'coat', 'edges'));
-// });
