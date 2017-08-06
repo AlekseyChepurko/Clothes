@@ -23,3 +23,8 @@ export const initOrderStructure = structure => ({
     type: actions.INIT_ORDER_STRUCTURE,
     structure
 });
+
+export const setItemParameterValue = (payload)=>({
+    type: actions.SET_ITEM_PARAMETER_VALUE,
+    payload
+});
