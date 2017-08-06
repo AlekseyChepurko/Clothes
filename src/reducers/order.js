@@ -5,7 +5,8 @@ import {
     ADD_ITEM,
     REMOVE_ITEM,
     SET_ACTIVE_ITEM,
-    SET_ORDER
+    SET_ORDER,
+    SET_ITEM_PARAMETER_VALUE
     } from '../constants/ActionTypes'
 
 const initialState =  [];
@@ -19,6 +20,10 @@ const order = (state = initialState, action)=>{
         case SET_ACTIVE_ITEM: return addItem(state, action.item);
 
         case SET_ORDER: return action.order;
+
+        case SET_ITEM_PARAMETER_VALUE: return {
+            ...state
+        };
         default:
             return state;
     }

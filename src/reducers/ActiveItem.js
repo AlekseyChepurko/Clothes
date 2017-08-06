@@ -24,7 +24,7 @@ const activeItem = (state = initialState, action)=>{
                 ...state,
                 parameter: action.param.name
             }
-        };
+        }
         default:
             return state;
     }
