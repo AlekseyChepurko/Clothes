@@ -2,15 +2,42 @@
  * Created by Алексей on 09.07.2017.
  */
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import {removeItem} from 'Root/actions/order'
+import arrow from './arrow.png'
+import deleteIcon from './deleteIcon.png'
+import showIcon from './showIcon.png'
 import './main.css'
+
+let MenuItemControls = (props) => {
+    const {removeAction, itemName} = props;
+    const removeItem = (e) => {
+        e.stopPropagation();
+        removeAction(itemName);
+    };
+    return <div styleName="menu__item-controls">
+        <div styleName="menu__item-control">
+            <img
+                onClick={removeItem}
+                src={deleteIcon}
+                alt="delete button image"/>
+        </div>
+        <div styleName="menu__item-control">
+            <img src={showIcon} alt="show button image"/>
+        </div>
+        <div styleName="menu__item-control">
+            <img src={arrow} alt="arrow control image"/>
+        </div>
+    </div>
+};
 
 class DropdownMenu extends Component {
     render(){
-        const {menu, isOpen} = this.props;
+        const {menu, isOpen, removeItem} = this.props;
         return <ul styleName={`menu-wrap hiding ${isOpen ? 'open' : 'close'}`}>
             {menu.map((item, key)=>
-                <MenuItem item={item} key={key} />
+                <MenuItem item={item} key={key} removeAction={removeItem}/>
             )}
         </ul>
     }
@@ -39,14 +66,20 @@ class MenuItem extends Component {
         this.setState({isOpen: !this.state.isOpen});
     }
     render(){
-        const {item} = this.props;
+        const {item, removeAction} = this.props;
         return <li
-            styleName="menu-item">
-            <div onClick={this.toggleStatus}>{item.text}</div>
-            {item.subItem
+            styleName="menu__item-wrap">
+            <div onClick={this.toggleStatus} styleName="menu__item">
+                <p>{item.name}</p>
+                {item.parameters
+                    ? <MenuItemControls itemName={item.name} removeAction={removeAction} />
+                    : null
+                }
+            </div>
+            {item.parameters
                 ? <DropdownMenu
                     isOpen={this.state.isOpen}
-                    menu={item.subItem}/>
+                    menu={item.parameters}/>
                 : null
             }
         </li>
@@ -54,8 +87,8 @@ class MenuItem extends Component {
 }
 
 MenuItem.defaultProps = {
-    item: {text: ''}
+    item: {name: ''}
 };
 
-export default DropdownMenu
+export default connect(()=>({}), {removeItem})(DropdownMenu)
 
