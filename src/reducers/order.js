@@ -15,7 +15,7 @@ const order = (state = initialState, action)=>{
     switch (action.type){
         case ADD_ITEM: return addItem(state, action.item);
 
-        case REMOVE_ITEM: return state.filter((elem)=>!(elem.name === action.item.name));
+        case REMOVE_ITEM: return state.filter((elem)=>!(elem.name === action.item.name || elem.name === action.item));
 
         case SET_ACTIVE_ITEM: return addItem(state, action.item);
 
