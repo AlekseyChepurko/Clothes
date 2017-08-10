@@ -4,12 +4,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import DropdownMenu from 'Common/DropdownMenu'
-import {menu} from './MenuStructure'
 import './main.css'
 
 class Mtm extends Component {
     render() {
-        return <DropdownMenu menu={menu[this.props.lang]} />
+        return <DropdownMenu menu={this.props.order} />
     }
 }
 
@@ -17,4 +16,9 @@ Mtm.defaultProps = {
     lang: 'en'
 };
 
-export default connect((state)=>({lang: state.language.lang}))(Mtm)
+const mapStateToProps = (state) => ({
+    lang: state.language.lang,
+    order: state.order
+});
+
+export default connect(mapStateToProps)(Mtm)
