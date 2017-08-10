@@ -23,10 +23,16 @@
     color: white;
     text-align: center;
     background: #8f744a;
+    transition: background-color .15s;
     border-radius: 7px;
+    border: 1px solid #8f744a;
     min-width: 140px;
     min-height: 6vh;
     max-height: 60px;
+    &:hover {
+        background: white;
+        color: #8f744a;
+    }
     @media (width < 750px) {
         margin: 0 0 1rem 0;
     }
@@ -41,11 +47,10 @@
 .languageList-wrap{
     display: flex;
     flex-direction:column;
-    align-items: center;
+    align-items: left;
     position: absolute;
     z-index: 99;
     margin: 5px 0 0 0;
-    box-shadow: inset 0 0 0 2px #8f744a;
     border-radius: 5px;
     box-sizing: border-box;
     background: white;
@@ -57,14 +62,14 @@
 
 .language__list-item{
     line-height: 2.5rem;
-    text-decoration: underline;
+    padding: 0 10px;
     &:hover{
         cursor: pointer;
     }
 }
 
 .open{
-    max-height: 1000px;
+    box-shadow: 0 0 10px 0px black;
 }
 .account{
     margin-right: 30px;

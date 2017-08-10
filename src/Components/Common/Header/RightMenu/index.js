@@ -25,14 +25,18 @@ class LanguageChoice extends Component {
         super(props);
         this.state = {
             langChoiceOpen: false
+        };
+        this.toggleOpen = () => {
+            this.setState({langChoiceOpen: !this.state.langChoiceOpen})
         }
-    }
+    };
+
     render(){
         const {langChoiceOpen} = this.state;
         const {changeLanguage} = this.props;
         return <section styleName="choice-wrap">
             <button
-                onClick={(()=>{this.setState({langChoiceOpen: !langChoiceOpen})}).bind(this)}
+                onClick={this.toggleOpen}
                 styleName="language">
                 <p>language</p>
                 <img src={downArrow} alt="arrow"/>
@@ -42,9 +46,12 @@ class LanguageChoice extends Component {
     }
 }
 class LanguageList extends Component {
+
     render(){
         const {languages, open, changeLanguage} = this.props;
-        return <ul styleName={`languageList-wrap ${open ? 'open' : ''}`}>
+        return <ul
+            style={{maxHeight: open ? `${2.5*languages.length}rem` : '0'}}
+            styleName={`languageList-wrap ${open ? 'open' : ''}`}>
             {languages.map((lang, key)=>
                 <li
                     styleName="language__list-item"
@@ -64,6 +71,4 @@ RightMenu.defaultProps = {
 };
 
 const mapStateToProps = (state)=>({lang: state.language.lang});
-//TODO wtf? Y cant i mapDispatchToProps ???
-// connect(()=>{},{changeLanguage})(LanguageList);
 export default connect(mapStateToProps, {...actions})(RightMenu)
