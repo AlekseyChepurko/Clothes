@@ -3,9 +3,8 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Carousel from 'nuka-carousel'
 import _ from 'lodash'
-import {sliderDecorators} from './Controlls/ControlButton'
+import ChoiceWithPicture from './ChoiceWithPicture'
 import {setActiveItemParameter} from 'Root/actions/itemSelectMenu'
 import './main.css'
 
@@ -41,38 +40,26 @@ class Display extends Component {
         if(sideMenuIsOpen){
             toShow = 3;
         }
-        const sliderSettings = {
-            slidesToShow: toShow,
-            slidesToScroll: toShow-1,
-            cellSpacing: 20,
-            style: {
-                height: "100%",
-            }
-        };
+
         const parameterDeps = getItemsDependencies(activeItemParameter, deps);
         const path = getActiveItemsPath({
             itemName: activeItemName,
             order: order,
             parameterDeps: parameterDeps,
         });
-        const items = getItemsToShow({
+        const itemsArray = getItemsToShow({
             parameter: activeItemParameter,
             itemStructure: orderStructure[_.findIndex(orderStructure, o=>o.name===activeItemName)],
             path
         }) || [];
-        // TODO refactor this shiiiiiit
-        // TODO delete carousel. its a kind of... blah.
+
+        const itemsObject = {};
+        itemsArray.forEach( item => {
+            itemsObject[item] = `/static/images/logos/${activeItemName}/${path.join('/')}/${item}.png`;
+        });
         return <scetion styleName="assHole">
                <section styleName="material__items-wrap">
-                   <Carousel {...sliderSettings} slideIndex={this.state.slideIndex} decorators={sliderDecorators}>
-                       {items.map((item, key)=>
-                               <img
-                                   // onClick={}
-                                   key={key}
-                                   src={`/static/images/logos/${activeItemName}/${path.join('/')}/${item}.png`}
-                                   alt=""/>
-                       )}
-                   </Carousel>
+                   <ChoiceWithPicture items={itemsObject}/>
                </section>
         </scetion>
     }

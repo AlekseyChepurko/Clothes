@@ -1,0 +1,16 @@
+.display__wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  overflow: auto;
+}
+
+.display__item-wrap {
+  max-height: 75%;
+}
+
+.display__item-image {
+  height: 100%;
+}
