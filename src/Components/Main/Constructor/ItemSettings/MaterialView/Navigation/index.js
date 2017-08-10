@@ -12,6 +12,9 @@ class Navigation extends Component {
         const {itemSelectMenuIsOpen, items, activeValue, lang} = this.props;
         const sliderParams = {
             slidesToShow: itemSelectMenuIsOpen ? 4 : 6,
+            style: {
+                height: '100%'
+            }
         };
         return <section styleName="wrap">
             <div styleName="slider">

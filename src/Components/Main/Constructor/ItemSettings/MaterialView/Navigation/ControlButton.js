@@ -6,7 +6,7 @@ import prevArrow from'./images/prevArrow.png'
 import nextArrow from'./images/nextArrow.png'
 
 const imgStyle = {
-    height: "1.5rem",
+    height: "1rem",
     paddingLeft: 20,
     paddingRight: 20,
     cursor: "pointer"
@@ -43,20 +43,21 @@ export const ControlPrevSlide = React.createClass({
 });
 
 
-
+const controlsStyle = {
+    height: "100%",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+};
 export const sliderDecorators = [
     {
         component: ControlPrevSlide,
         position: 'CenterLeft',
-        style: {
-            height: "100%"
-        }
+        style: controlsStyle
     },
     {
         component:ControlNextSlide,
         position: 'CenterRight',
-        style: {
-            height: "100%"
-        }
+        style: controlsStyle
     }
 ];
