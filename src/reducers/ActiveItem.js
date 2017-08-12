@@ -22,7 +22,7 @@ const activeItem = (state = initialState, action)=>{
         case SET_ACTIVE_ITEM_PARAMETER: {
             return {
                 ...state,
-                parameter: action.param.name
+                parameter: action.param.name || action.param
             }
         }
         default:

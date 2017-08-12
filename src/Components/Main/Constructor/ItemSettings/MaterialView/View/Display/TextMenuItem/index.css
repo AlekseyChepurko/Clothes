@@ -1,0 +1,42 @@
+.menu__item-wrap {
+  min-width: 190px;
+  background: #f1f1f1;
+  color: #bfbfbf;
+  height: 100%;
+  margin: 0 25px 0 0;
+  padding: 10px 0 10px 10px;
+  box-sizing: border-box;
+  &.active {
+    background: white;
+    color: #838383;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+
+.menu__item-tabName {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.menu__item-item {
+  margin: 0 0 5px 0;
+  cursor: pointer;
+  &.active {
+    background: #e7e7e7;
+  }
+}
+
+.menu__item-choices {
+  overflow-y: hidden;
+  height: calc(100% - 3rem);
+
+  &.active {
+    overflow-y: auto;
+  }
+}

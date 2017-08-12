@@ -47,12 +47,12 @@ class Constructor extends Component {
     }
     render(){
         return <section styleName="common" style={{zIndex: 10}}>
-            {this.props.sideMenuIsOpen
-            ? null
-            : <ItemSelect/>}
-            <ItemSettings/>
+            <ItemSelect sideMenuIsOpen={this.props.sideMenuIsOpen}/>
+            <ItemSettings fill={this.props.sideMenuIsOpen || !this.props.leftPanelIsOpen}/>
         </section>
     }
 }
-const mapStateToProps = (state)=>({sideMenuIsOpen: state.sideMenu.isOpen});
+const mapStateToProps = (state)=>({
+    leftPanelIsOpen: state.Constructor.itemSelectMenu.isOpen,
+    sideMenuIsOpen: state.sideMenu.isOpen});
 export default connect(mapStateToProps,{...actions})(Constructor);

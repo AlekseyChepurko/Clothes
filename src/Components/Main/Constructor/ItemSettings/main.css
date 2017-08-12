@@ -1,5 +1,9 @@
 .wrap{
-  width: 100%;
+  width: calc(100% - 19.1vw - 20px);
+  transition: width 0.3s;
+  &.fill {
+    width: 100%
+  }
   @media (width < 1200px) {
     min-width: 0;
   }

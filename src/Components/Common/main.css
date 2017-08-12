@@ -5,4 +5,9 @@
 
 .content-wrap{
   width: 100%;
+  transition: width 0.3s;
+
+  &.min {
+    width: 80vw;
+  }
 }

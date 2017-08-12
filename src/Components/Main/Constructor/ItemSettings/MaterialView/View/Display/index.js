@@ -1,28 +1,22 @@
 /**
  * Created by Алексей on 14.07.2017.
  */
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import _ from 'lodash'
-import ChoiceWithPicture from './ChoiceWithPicture'
-import {setActiveItemParameter} from 'Root/actions/itemSelectMenu'
-import './main.css'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import _ from 'lodash';
+import TextMenuItem from './TextMenuItem';
+import {displayOrder} from 'Root/constants/ItemOptionsDisplayOrder'
+import {setActiveItemParameter} from 'Root/actions/itemSelectMenu';
+import './main.css';
 
 
 class Display extends Component {
-    constructor(){
-        super();
-        this.state = {
-            imgToShow: 3,
-            slideIndex: 0
-        }
-    }
     // TODO refactor timeout
     componentWillReceiveProps(){
-        this.setState({slideIndex: 1});
-        setTimeout(()=>{
-            this.setState({slideIndex: 0})
-        },0);
+        // this.setState({slideIndex: 1});
+        // setTimeout(()=>{
+        //     this.setState({slideIndex: 0})
+        // },0);
     }
 
     render() {
@@ -32,36 +26,32 @@ class Display extends Component {
             order,
             orderStructure,
             activeItemParameter,
-            activeItemName,
-            itemSelectMenuIsOpen,
-            sideMenuIsOpen} = this.props;
+            activeItemName} = this.props;
 
-        let toShow = itemSelectMenuIsOpen ? 3 : 4;
-        if(sideMenuIsOpen){
-            toShow = 3;
-        }
+        const activeItem = order[_.findIndex(order, orderItem => orderItem.name === activeItemName)],
+                menuItems = sortByOrderArray(activeItem ? activeItem.parameters : []);
 
-        const parameterDeps = getItemsDependencies(activeItemParameter, deps);
-        const path = getActiveItemsPath({
-            itemName: activeItemName,
-            order: order,
-            parameterDeps: parameterDeps,
+        menuItems.forEach(menuItem => {
+            const parameterDeps = getItemsDependencies(menuItem.name, deps);
+            const path = getActiveItemsPath({
+                itemName: activeItemName,
+                order: order,
+                parameterDeps: parameterDeps,
+            });
+            menuItem.choices = getItemsToShow({
+                    parameter: menuItem.name,
+                    itemStructure: orderStructure[_.findIndex(orderStructure, o=>o.name===activeItemName)],
+                    path
+                }) || [];
         });
-        const itemsArray = getItemsToShow({
-            parameter: activeItemParameter,
-            itemStructure: orderStructure[_.findIndex(orderStructure, o=>o.name===activeItemName)],
-            path
-        }) || [];
-
-        const itemsObject = {};
-        itemsArray.forEach( item => {
-            itemsObject[item] = `/static/images/logos/${activeItemName}/${path.join('/')}/${item}.png`;
-        });
-        return <scetion styleName="assHole">
-               <section styleName="material__items-wrap">
-                   <ChoiceWithPicture items={itemsObject}/>
-               </section>
-        </scetion>
+        return <ul styleName="menu-wrap">
+            {menuItems.map( menuItem => <TextMenuItem
+                key={menuItem.name}
+                tabName={menuItem.name}
+                items={menuItem.choices}
+                active={menuItem.name === activeItemParameter}
+                />)}
+        </ul>
     }
 }
 
@@ -116,4 +106,10 @@ function getItemsDependencies(parameter, parametersDependencies) {
     if (index !== -1)
         res.unshift(getItemsDependencies(parametersDependencies[index].parent, parametersDependencies));
     return _.flatten(res);
+}
+
+function sortByOrderArray(target=[],orderArray=displayOrder){
+    return target.sort( (a,b) =>
+        orderArray.indexOf(a.name) >= orderArray.indexOf(b.name) ? 1 : -1
+    )
 }
