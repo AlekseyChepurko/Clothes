@@ -1,11 +1,22 @@
 .menu-wrap{
   display: flex;
   position: relative;
-  height: 100%;
   width: calc(100% - 20vw);
   overflow-x: auto;
   overflow-y: hidden;
   margin: 20px 20px 0;
   border-top: 1px solid #a6a6a6;
   border-bottom: 1px solid #a6a6a6;
+}
+
+.item__settings-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.item__parameter-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20vw
 }

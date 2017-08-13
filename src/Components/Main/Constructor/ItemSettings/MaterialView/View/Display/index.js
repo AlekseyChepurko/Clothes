@@ -44,15 +44,20 @@ class Display extends Component {
                     path
                 }) || [];
         });
-        return <ul styleName="menu-wrap">
-            {menuItems.map( menuItem => <TextMenuItem
-                key={menuItem.name}
-                tabName={menuItem.name}
-                items={menuItem.choices}
-                chosenParameter={menuItem.value}
-                active={menuItem.name === activeItemParameter}
+        return <div styleName="item__settings-wrap">
+                <ul styleName="menu-wrap">
+                {menuItems.map( menuItem => <TextMenuItem
+                    key={menuItem.name}
+                    tabName={menuItem.name}
+                    items={menuItem.choices}
+                    chosenParameter={menuItem.value}
+                    active={menuItem.name === activeItemParameter}
                 />)}
-        </ul>
+            </ul>
+            <div styleName="item__parameter-image">
+                <span>picture</span>
+            </div>
+        </div>
     }
 }
 
