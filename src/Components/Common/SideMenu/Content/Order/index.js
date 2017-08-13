@@ -2,6 +2,7 @@
  * Created by Алексей on 09.07.2017.
  */
 import React, {Component} from 'react'
+import "simplebar"
 import Mtm from './Mtm'
 import Rtw from './Rtw'
 import './main.css'
@@ -37,7 +38,7 @@ class Order extends Component {
         }
     }
     render() {
-        return <section styleName="sideMenu__order-section">
+        return <section data-simplebar styleName="sideMenu__order-section">
             <ModeSwitcher _this={this} tabs={[{name: 'mtm', tab: Mtm}, {name: 'rtw', tab: Rtw}]}/>
             {React.createElement(this.state.activeTab)}
         </section>

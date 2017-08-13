@@ -1,9 +1,7 @@
-/**
- * Created by Алексей on 14.07.2017.
- */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import _ from 'lodash';
+import ReactScrollbar from 'react-scrollbar-js';
 import TextMenuItem from './TextMenuItem';
 import {displayOrder} from 'Root/constants/ItemOptionsDisplayOrder'
 import {setActiveItemParameter} from 'Root/actions/itemSelectMenu';
@@ -11,16 +9,7 @@ import './main.css';
 
 
 class Display extends Component {
-    // TODO refactor timeout
-    componentWillReceiveProps(){
-        // this.setState({slideIndex: 1});
-        // setTimeout(()=>{
-        //     this.setState({slideIndex: 0})
-        // },0);
-    }
-
     render() {
-
         const {
             deps,
             order,
@@ -45,15 +34,17 @@ class Display extends Component {
                 }) || [];
         });
         return <div styleName="item__settings-wrap">
-                <ul styleName="menu-wrap">
-                {menuItems.map( menuItem => <TextMenuItem
-                    key={menuItem.name}
-                    tabName={menuItem.name}
-                    items={menuItem.choices}
-                    chosenParameter={menuItem.value}
-                    active={menuItem.name === activeItemParameter}
-                />)}
-            </ul>
+            <ReactScrollbar style={{width: "calc(100% - 20vw)"}}>
+                <div styleName="menu-wrap">
+                    {menuItems.map( menuItem => <TextMenuItem
+                        key={menuItem.name}
+                        tabName={menuItem.name}
+                        items={menuItem.choices}
+                        chosenParameter={menuItem.value}
+                        active={menuItem.name === activeItemParameter}
+                    />)}
+                </div>
+            </ReactScrollbar>
             <div styleName="item__parameter-image">
                 <span>picture</span>
             </div>
