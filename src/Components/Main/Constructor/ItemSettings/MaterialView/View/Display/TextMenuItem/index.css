@@ -4,7 +4,7 @@
   color: #bfbfbf;
   height: 100%;
   margin: 0 25px 0 0;
-  padding: 10px 0 10px 10px;
+  padding: 10px 0;
   box-sizing: border-box;
   &.active {
     background: white;
@@ -25,9 +25,11 @@
 }
 
 .menu__item-item {
+  line-height: 1.2rem;
   margin: 0 0 5px 0;
+  padding: 0 10px;
   cursor: pointer;
-  &.active {
+  &.chosen {
     background: #e7e7e7;
   }
 }

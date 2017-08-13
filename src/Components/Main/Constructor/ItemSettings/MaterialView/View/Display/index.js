@@ -28,7 +28,7 @@ class Display extends Component {
             activeItemParameter,
             activeItemName} = this.props;
 
-        const activeItem = order[_.findIndex(order, orderItem => orderItem.name === activeItemName)],
+        const activeItem = Object.assign({}, order[_.findIndex(order, orderItem => orderItem.name === activeItemName)]),
                 menuItems = sortByOrderArray(activeItem ? activeItem.parameters : []);
 
         menuItems.forEach(menuItem => {
@@ -49,6 +49,7 @@ class Display extends Component {
                 key={menuItem.name}
                 tabName={menuItem.name}
                 items={menuItem.choices}
+                chosenParameter={menuItem.value}
                 active={menuItem.name === activeItemParameter}
                 />)}
         </ul>

@@ -10,7 +10,11 @@ import "./index.css";
 function TextMenuItem(props) {
     const {
         items,
-        tabName, 
+        tabName,
+        itemName,
+        activeItemParameter,
+        chosenParameter,
+        setItemParameterValue,
         active} = props;
     const click = () => () => {
         props.setActiveItemParameter(tabName);
@@ -23,23 +27,59 @@ function TextMenuItem(props) {
         </div>
         <ul
             styleName={`menu__item-choices ${active ? "active" : ""}`}>
-            { items.map( item => <li
-                styleName="menu__item-item"
-                key={item}>{item}</li>) }
+            { items.map( item => <Item
+                setItemParameterValue={setItemParameterValue}
+                itemName={itemName}
+                activeItemParameter={activeItemParameter}
+                parameterValue={item}
+                parameterName={tabName}
+                stylename={`menu__item-item ${item === chosenParameter ? "chosen" : ""}`}
+                key={item}>{item}</Item>) }
         </ul>
     </li>
 }
+function Item(props){
+    const {
+        setItemParameterValue,
+        activeItemParameter,
+        itemName,
+        parameterName,
+        parameterValue
+    } = props;
 
+    const click = (e) => {
+        e.preventDefault();
+        if (activeItemParameter !== parameterName) return;
+        setItemParameterValue({itemName, parameterName, parameterValue})
+    };
+    const mouseDown = (e) => {
+        e.preventDefault();
+    };
+    return <li
+        styleName={props.stylename}
+        onClick={click}
+        onMouseDown={mouseDown}
+    >
+        {props.children}
+    </li>
+}
 TextMenuItem.defaultProps = {
     items: [],
+    chosenParameter: "",
     tabName: "",
     active: false,
 };
 
 TextMenuItem.propTypes = {
     items: PropTypes.array,
+    chosenParameter: PropTypes.string,
     tabName: PropTypes.string,
     active: PropTypes.bool,
 };
 
-export default connect(()=>({}), {...actions})(TextMenuItem);
+const mapStateToProps = (state) => ({
+    itemName: state.Constructor.activeItem.name,
+    activeItemParameter: state.Constructor.activeItem.parameter,
+});
+
+export default connect(mapStateToProps, {...actions})(TextMenuItem);

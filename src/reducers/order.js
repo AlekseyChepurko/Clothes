@@ -7,7 +7,8 @@ import {
     SET_ACTIVE_ITEM,
     SET_ORDER,
     SET_ITEM_PARAMETER_VALUE
-    } from '../constants/ActionTypes'
+    } from '../constants/ActionTypes';
+import _ from "lodash";
 
 const initialState =  [];
 
@@ -21,9 +22,13 @@ const order = (state = initialState, action)=>{
 
         case SET_ORDER: return action.order;
 
-        case SET_ITEM_PARAMETER_VALUE: return {
-            ...state
-        };
+        case SET_ITEM_PARAMETER_VALUE: {
+            const {
+                itemName,
+                parameterName,
+                parameterValue} = action.payload;
+            return setParameterValue(state, itemName, parameterName, parameterValue);
+        }
         default:
             return state;
     }
@@ -33,5 +38,13 @@ const addItem = (items, item)=>{
     return items.find((elem)=>elem.name === item.name)
         ? items
         : [...items, item]
+};
+
+const setParameterValue = (order, itemName, parameterName, parameterValue ) => {
+    const itemIndex = _.findIndex(order, item => item.name===itemName);
+    const parameterIndex = _.findIndex(order[itemIndex].parameters, parameter => parameter.name === parameterName);
+    const res = [...order];
+    res[itemIndex].parameters[parameterIndex].value = parameterValue;
+    return res;
 };
 export default order
