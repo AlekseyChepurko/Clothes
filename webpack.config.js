@@ -1,10 +1,5 @@
-/**
- * Created by Алексей on 07.07.2017.
- */
-
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin");
 const WebpackChunkHash = require("webpack-chunk-hash");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
@@ -29,22 +24,15 @@ const paths = {
 const plugins = [
     extractSass,
     new webpack.optimize.CommonsChunkPlugin({
-        name: ["vendor", "manifest"], // vendor libs + extracted manifest
-        minChunks: function (module) {
-            // this assumes your vendor imports exist in the node_modules directory
-            return module.context && module.context.indexOf('node_modules') !== -1;
-        }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-        name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
+        name: 'vendor',
+        filename: 'vendor-[hash].js',
+        minChunks(module) {
+            const context = module.context;
+            return context && context.indexOf('node_modules') >= 0;
+        },
     }),
     new WebpackChunkHash(),
     new WebpackCleanupPlugin(),
-    new ChunkManifestPlugin({
-        filename: "chunk-manifest.json",
-        manifestVariable: "webpackManifest",
-        inlineManifest: true
-    }),
     new CopyWebpackPlugin([{from: paths.static, to: 'static'}],{copyUnmodified: true}),
     new webpack.HotModuleReplacementPlugin(),
     new BundleAnalyzerPlugin({openAnalyzer: true}),
@@ -58,17 +46,15 @@ const plugins = [
     }),
 ];
 
-let entries = {
-    // vendor: [paths.scripts+'common.js']
-};
+let entries = {};
 
 // TODO wraitable for.... what?
 pages.forEach(page => {
     Object.defineProperty(entries, page, {
-    value: paths.scripts+page+'.js',
-    enumerable: true,
-    writable: true
-})
+        value: paths.scripts+page+'.js',
+        enumerable: true,
+        writable: true
+    })
 });
 module.exports = {
     entry: entries,
@@ -87,7 +73,7 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 loaders: [
-                // 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]&outputPath=assets/imgs/',
+                    // 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]&outputPath=assets/imgs/',
                     'url-loader?limit=8192',
                     // {loader: 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false',
                     {loader: 'image-webpack-loader',
